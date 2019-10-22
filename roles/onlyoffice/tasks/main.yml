@@ -1,0 +1,26 @@
+---
+- name: change swap space for onlyoffice
+  lineinfile:
+    dest: /etc/waagent.conf
+    regexp: 'ResourceDisk.SwapSizeMB=0'
+    line: "ResourceDisk.SwapSizeMB=4096"
+    state: present
+  when: cloud == 'azure'
+
+- name: Download auto-install script
+  get_url:
+    url: https://download.onlyoffice.com/install/opensource-install.sh
+    dest: ~/
+    mode: 0755
+
+- name: Install onlyoffice  without Mail Server
+  expect:
+    command: bash ~/opensource-install.sh -ims false
+    responses:
+      (?i)[Y/N/C]?: "N"
+  no_log: true
+
+- name: Delete script
+  file:
+    path: ~/opensource-install.sh
+    state: absent
