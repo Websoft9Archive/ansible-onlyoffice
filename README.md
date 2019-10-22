@@ -3,6 +3,7 @@
 bash opensource-install.sh -ims false  # 不安装Mail Server
 
 **MySQL server**
+
 Parameter |  Description  | Default
 ----------|---------------|---------
 -mysqlh   --mysqlhost	 |  MySQL server host  | localhost
@@ -11,6 +12,7 @@ Parameter |  Description  | Default
 -mysqlrp  --mysqlrootpassword |	MySQL server root password | my-secret-pw
 
 **Community Server database**
+
 Parameter |  Description  | Default
 ----------|---------------|---------
 -mysqld --mysqldatabase |	Community Server database name |	onlyoffice
@@ -18,6 +20,7 @@ Parameter |  Description  | Default
 -mysqlp --mysqlpassword |	Community Server database password |	onlyoffice_pass
 
 **Mail Server database**
+
 Parameter |  Description  | Default
 ----------|---------------|---------
 -mysqlmd --mysqlmaildatabase |	Mail Server database name |	onlyoffice_mailserver
