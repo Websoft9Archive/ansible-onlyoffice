@@ -1,26 +1,80 @@
 ---
-- name: change swap space for onlyoffice
-  lineinfile:
-    dest: /etc/waagent.conf
-    regexp: 'ResourceDisk.SwapSizeMB=0'
-    line: "ResourceDisk.SwapSizeMB=4096"
-    state: present
-  when: cloud == 'azure'
-
 - name: Download auto-install script
   get_url:
-    url: https://download.onlyoffice.com/install/opensource-install.sh
-    dest: ~/
+    url: "{{script_url}}"
+    dest: /tmp/
     mode: 0755
 
-- name: Install onlyoffice  without Mail Server
-  expect:
-    command: bash ~/opensource-install.sh -ims false
-    responses:
-      (?i)[Y/N/C]?: "N"
-  no_log: true
+- name: Copy install.exp to /tmp
+  template:
+    src: install.exp
+    dest: /tmp/install.exp
+    mode: 0755
+
+- name: Upgrade all packages to the latest version
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
+    force_apt_get: True
+    autoremove: yes
+
+- name: Install onlyoffice without Mail Server
+  shell: expect install.exp
+  args:
+    chdir: /tmp/
+
+# TODO: 添加 onlyoffice 数据库用户，授权，更改 /var/www/onlyoffice/WebStudio/web.connections.config 文件中的数据库配置信息
+- name: get default root password of mysql
+  shell: grep "Password" /var/www/onlyoffice/WebStudio/web.connections.config | awk -F\; '{print $4}' | awk -F'=' '{print $2}'
+  register: root_password
+
+- name: create mysql user "onlyoffice"
+  mysql_user:
+    name: onlyoffice
+    password: "{{root_password.stdout}}"
+    login_user: root
+    login_password: "{{root_password.stdout}}"
+    priv: 'onlyoffice.*:ALL'
+    
+- name: replace user id in web.connections.config
+  replace:
+    path: /var/www/onlyoffice/WebStudio/web.connections.config
+    before: ';Password'
+    after: 'User ID='
+    regexp: 'root'
+    replace: 'onlyoffice'
+
+# # TODO:
+
+- name: restart mysql monoserve monoserveApiSystem
+  service:
+    name: mysql 
+    state: restarted
+    enabled: yes
+
+- name: restart monoserve
+  service:
+    name: monoserve.service
+    state: restarted
+    enabled: yes
+
+- name: restart monoserveApiSystem.service
+  service: name = monoserveApiSystem.service  state=restarted
 
 - name: Delete script
   file:
-    path: ~/opensource-install.sh
+    path: /tmp/opensource-install.sh
     state: absent
+
+- name: Create /crendentials
+  file:
+    path: /crendentials
+    state: directory
+    mode: 0755
+
+- name: Create password.txt
+  template:
+    src: password.txt.j2
+    dest: /crendentials/password.txt
+    mode: 0644
