@@ -1,5 +1,2 @@
-[local]
-localhost
-
 [onlyoffice]
-13.90.143.89 ansible_ssh_user=websoft9 ansible_ssh_pass=Qwerty123456 ansible_sudo_pass=Qwerty123456
+23.101.136.243 ansible_ssh_user=websoft9 ansible_ssh_pass=Qwerty123456 ansible_sudo_pass=Qwerty123456

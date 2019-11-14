@@ -60,21 +60,45 @@
     enabled: yes
 
 - name: restart monoserveApiSystem.service
-  service: name = monoserveApiSystem.service  state=restarted
+  service: name=monoserveApiSystem.service  state=restarted
 
 - name: Delete script
   file:
     path: /tmp/opensource-install.sh
     state: absent
 
-- name: Create /crendentials
+- name: Create /credentials
   file:
-    path: /crendentials
+    path: /credentials
     state: directory
     mode: 0755
 
 - name: Create password.txt
   template:
     src: password.txt.j2
-    dest: /crendentials/password.txt
+    dest: /credentials/password.txt
     mode: 0644
+
+- name: systemctl update
+  apt:
+    name: "*"
+    state: latest
+
+- name: Databases Random Password
+  copy: 
+    src: init.sh
+    dest: /root/
+    mode: 0750
+
+- name: create rc.local
+  file: 
+    path: /etc/rc0.d/rc.local
+    state: touch
+    mode: 0750
+
+- name: Setting Startup
+  lineinfile:
+    path: /etc/rc0.d/rc.local
+    regexp: '/root/init.sh'
+    line: '/root/init.sh'
+    mode: 0750

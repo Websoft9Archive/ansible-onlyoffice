@@ -12,7 +12,7 @@ root_hosts=$(echo $(mysql -uroot -p${old_password} -e "select host from mysql.us
                                                                                                                           
 for i in $root_hosts                                                                                                      
 do                                                                                                                        
-          mysqladmin -uroot -p${old_password} -h $i password $new_root_password                                           
+    mysqladmin -uroot -p${old_password} -h $i password $new_root_password                                           
 done                                                                                                                    
                                                                                                                           
 mysqladmin -uonlyoffice -p${old_password} password $new_onlyoffice_password                                             
@@ -21,9 +21,9 @@ sed -i "s/${old_password}/${new_onlyoffice_password}/" /var/www/onlyoffice/WebSt
 systemctl restart mysql  monoserve.service         
                                                                                                                           
                                                                                                                           
-echo 'MySQL username:root\nMySQL Password:'$new_root_password  > /credentials/password.txt                           
-echo  '\nMySQL username:onlyoffice\nMySQL Password:'$new_onlyoffice_password  >> /credentials/password.txt 
+echo 'MySQL username:root  MySQL Password:'$new_root_password  > /credentials/password.txt                           
+echo 'MySQL username:onlyoffice  MySQL Password:'$new_onlyoffice_password  >> /credentials/password.txt 
 
-sed -i 's/\/root\/init.sh//g' /etc/rc.local
+sed -i 's/\/root\/init.sh//g' /etc/rc0.d/rc.local
 
 rm -rf /root/init.sh
