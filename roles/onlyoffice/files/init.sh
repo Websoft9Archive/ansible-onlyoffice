@@ -24,6 +24,6 @@ systemctl restart mysql  monoserve.service
 echo 'MySQL username:root  MySQL Password:'$new_root_password  > /credentials/password.txt                           
 echo 'MySQL username:onlyoffice  MySQL Password:'$new_onlyoffice_password  >> /credentials/password.txt 
 
-sed -i 's/\/root\/init.sh//g' /etc/rc0.d/rc.local
+sed -i 's/\/root\/init.sh//g' /etc/rc.local
 
 rm -rf /root/init.sh
