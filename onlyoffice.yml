@@ -1,6 +1,6 @@
 ## 服务器前置任务（ubuntu使用）
 - name: onlyoffice
-  hosts: onlyoffice
+  hosts: all
   become: yes
   become_method: sudo
   gather_facts: False
@@ -10,7 +10,7 @@
 
 ## 部署
 - name: onlyoffice
-  hosts: onlyoffice
+  hosts: all
   become: yes
   become_method: sudo
   roles:
