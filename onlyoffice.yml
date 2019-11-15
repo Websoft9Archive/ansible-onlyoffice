@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ## 服务器前置任务（ubuntu使用）
 # - name: onlyoffice
 #   hosts: onlyoffice
@@ -7,10 +8,21 @@
 #   pre_tasks:
 #     - name: Install Python
 #       raw: sudo apt-get install python -y
+=======
+## 服务器前置任务（ubuntu使用）
+- name: onlyoffice
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: False
+  pre_tasks:
+    - name: Install Python
+      raw: sudo apt update && sudo apt-get install python -y
+>>>>>>> e2ac616f660613b6ba0bfb5e5e52c59671d1a455
 
 ## 部署
 - name: onlyoffice
-  hosts: onlyoffice
+  hosts: all
   become: yes
   become_method: sudo
   roles:
