@@ -6,7 +6,7 @@
   gather_facts: False
   pre_tasks:
     - name: Install Python
-      raw: sudo apt-get install python -y
+      raw: sudo apt update && sudo apt-get install python -y
 
 ## 部署
 - name: onlyoffice
