@@ -1,8 +1,8 @@
 #!/bin/bash
 old_password=$(grep 'password' /var/www/onlyoffice/sites/default/web_connection.xml | awk -F';' )
 
-new_root_password=$(pwgen -Acns 8 1)
-new_onlyoffice_password=$(pwgen -Acns 8 1)
+new_root_password=$(pwgen -ncCs 10 1)
+new_onlyoffice_password=$(pwgen -ncCs 10 1)
 
 systemctl restart mysql
 
