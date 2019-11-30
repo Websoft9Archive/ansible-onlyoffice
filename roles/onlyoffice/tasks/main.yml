@@ -10,8 +10,8 @@
 - name: Install with Docker [Y/N/C]? N, then install rpm/deb
   expect:
     echo: yes
-    timeout: null
-    command: /tmp/opensource-install.sh -ims false
+    timeout: 10
+    command: /tmp/opensource-install.sh
     responses:
       (.*)Install with Docker(.*): 'n'
     
@@ -93,6 +93,7 @@
 
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
+# 推送开机自启脚本
 - name: Setting Startup
   lineinfile:
     path: /etc/rc.local
