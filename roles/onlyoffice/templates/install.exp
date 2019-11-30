@@ -1,6 +1,0 @@
-#!/usr/bin/expect
-set timeout -1
-
-spawn /tmp/opensource-install.sh -ims false
-expect "\[Y/N/C\]?" {send "N\r"}
-expect eof
