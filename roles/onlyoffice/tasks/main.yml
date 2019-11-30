@@ -10,7 +10,7 @@
 - name: Install with Docker [Y/N/C]? N, then install rpm/deb
   expect:
     echo: yes
-    timeout: 10
+    timeout: null
     command: /tmp/opensource-install.sh
     responses:
       (.*)Install with Docker(.*): 'n'
