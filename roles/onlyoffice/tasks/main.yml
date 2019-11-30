@@ -7,13 +7,13 @@
       mode: 0755
     
   - name: install script
-    command: /tmp/bash install-Debian.sh -os true
+    command: /tmp/install-Debian.sh -os true
 
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 
 - block:
-  - name: Download OnlyOffice's auto-install script of Redhat&Centos
+  - name: Download OnlyOffice's auto-install script of Redhat&CentOS
     get_url:
       url: "{{script_url_redhat}}"
       dest: /tmp/
