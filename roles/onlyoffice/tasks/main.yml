@@ -1,20 +1,16 @@
 ---
-- name: Download OnlyOffice's auto-install script
-  get_url:
-    url: "{{script_url}}"
-    dest: /tmp/
-    mode: 0755
-
-# 通过静默安装的方式启动官方安装脚本
-
-- name: Install with Docker [Y/N/C]? N, then install rpm/deb
-  expect:
-    echo: yes
-    timeout: null
-    command: /tmp/opensource-install.sh
-    responses:
-      (.*)Install with Docker(.*): 'n'
+- block:
+  - name: Download OnlyOffice's auto-install script
+    get_url:
+      url: "{{script_url_debian}}"
+      dest: /tmp/
+      mode: 0755
     
+    - name: install script
+      command: /tmp/install-RedHat.sh -os true 
+
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
 
 # 处理数据库随机密码问题
 
