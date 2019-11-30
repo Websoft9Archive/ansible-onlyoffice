@@ -23,7 +23,7 @@ Additional requirements at least 6 GB of swap
 
 ## 本项目安装的是 ONLYOFFICE 最新版吗？
 
-本项目采用官方提供的安装脚本进行安装，官方会在安装脚本中对宝塔的版本进行控制，即每一次安装均可保证为 ONLYOFFICE 官方发布的最新稳定版。
+本项目采用官方提供的[安装脚本](https://helpcenter.onlyoffice.com/server/docker/oneclickinstall/index.aspx)进行安装，官方会在安装脚本中 ONLYOFFICE 的版本进行控制，即每一次安装均可保证为 ONLYOFFICE 官方发布的最新稳定版。
 
 我们会定期检查安装脚本 URL 地址的准确性，以保证用户可以顺利安装。
 
