@@ -1,16 +1,28 @@
 ---
 - block:
-  - name: Download OnlyOffice's auto-install script
+  - name: Download OnlyOffice's auto-install script of Ubuntu&Debian
     get_url:
       url: "{{script_url_debian}}"
       dest: /tmp/
       mode: 0755
     
     - name: install script
-      command: /tmp/install-RedHat.sh -os true 
+      command: /tmp/bash install-Debian.sh -os true
 
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
+
+- block:
+  - name: Download OnlyOffice's auto-install script of Redhat&Centos
+    get_url:
+      url: "{{script_url_redhat}}"
+      dest: /tmp/
+      mode: 0755
+    
+    - name: install script
+      command: /tmp/install-RedHat.sh -os true 
+
+  when: ansible_os_family == 'RedHat'
 
 # 处理数据库随机密码问题
 
