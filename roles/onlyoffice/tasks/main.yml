@@ -6,8 +6,8 @@
       dest: /tmp/
       mode: 0755
     
-    - name: install script
-      command: /tmp/bash install-Debian.sh -os true
+  - name: install script
+    mancommand: /tmp/bash install-Debian.sh -os true
 
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
@@ -19,8 +19,8 @@
       dest: /tmp/
       mode: 0755
     
-    - name: install script
-      command: /tmp/install-RedHat.sh -os true 
+  - name: install script
+    command: /tmp/install-RedHat.sh -os true 
 
   when: ansible_os_family == 'RedHat'
 
