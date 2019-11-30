@@ -7,7 +7,7 @@
       mode: 0755
     
   - name: install script
-    mancommand: /tmp/bash install-Debian.sh -os true
+    command: /tmp/bash install-Debian.sh -os true
 
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
