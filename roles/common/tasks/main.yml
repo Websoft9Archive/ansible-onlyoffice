@@ -20,6 +20,11 @@
       name: [mosh,yum-utils,wget,openssl,unzip,bzip2,expect,at,vim, screen,pwgen,git, htop, yum-cron,ImageMagick, goaccess,MySQL-python,python-pip,inotify-tools]
       state: installed
     
+  - name: pip pexpect
+    pip:
+      name: pexpect
+
+
   - name: Configuration yum-cron
     copy: src=yum-cron.conf dest=/etc/yum/
 

@@ -1,30 +1,24 @@
 ---
-- name: Download auto-install script
+- name: Download OnlyOffice's auto-install script
   get_url:
     url: "{{script_url}}"
     dest: /tmp/
     mode: 0755
 
-- name: Copy install.exp to /tmp
-  template:
-    src: install.exp
-    dest: /tmp/install.exp
-    mode: 0755
+# 通过静默安装的方式启动官方安装脚本
 
-- name: Upgrade all packages to the latest version
-  apt:
-    name: "*"
-    state: latest
-    update_cache: yes
-    force_apt_get: True
-    autoremove: yes
+- name: Install with Docker [Y/N/C]? N, then install rpm/deb
+  expect:
+    echo: yes
+    timeout: null
+    command: /tmp/opensource-install.sh -ims false
+    responses:
+      (.*)Install with Docker(.*): 'n'
+    
 
-- name: Install onlyoffice without Mail Server
-  shell: expect install.exp
-  args:
-    chdir: /tmp/
+# 处理数据库随机密码问题
 
-# 添加 onlyoffice 数据库用户，授权，更改 /var/www/onlyoffice/WebStudio/web.connections.config 文件中的数据库配置信息
+#添加 onlyoffice 数据库用户，授权，更改 /var/www/onlyoffice/WebStudio/web.connections.config 文件中的数据库配置信息
 - name: get default root password of mysql
   shell: grep "Password" /var/www/onlyoffice/WebStudio/web.connections.config | awk -F\; '{print $4}' | awk -F'=' '{print $2}'
   register: root_password
@@ -77,28 +71,27 @@
     dest: /credentials/password.txt
     mode: 0644
 
-- name: systemctl update
-  apt:
-    name: "*"
-    state: latest
-
 - name: Databases Random Password
   copy: 
     src: init.sh
     dest: /root/
     mode: 0750
 
-- name: Setting rc.local
-  file:
-    path: /etc/rc.local
-    state: touch
-    mode: 0750
+# 开机自启脚本设置，其中 Ubuntu需提前创建 rc.local 文件
+- block:
+  - name: Setting rc.local
+    file:
+      path: /etc/rc.local
+      state: touch
+      mode: 0750
 
-- name: Write rc.local
-  shell: echo "#!/bin/bash" > /etc/rc.local
+  - name: Write rc.local
+    shell: echo "#!/bin/bash" > /etc/rc.local
 
-- name: restart rc.local
-  service: name=rc.local state=restarted enabled=yes
+  - name: restart rc.local
+    service: name=rc.local state=restarted enabled=yes
+
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Setting Startup
   lineinfile:
