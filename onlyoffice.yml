@@ -14,19 +14,9 @@
   hosts: all
   become: yes
   become_method: sudo
-  vars_prompt:
-    - name: 'init'
-      prompt: "After installation Operating System initialization? \n \n
-      ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! \n
-      !! Warning ⚠ :Please select carefully, initialization will delete public key or user information !! \n
-      ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !  \n\n
-      1: Yes\n
-      2: No (default and suggest)\n"
-      private: no
-      default: 2 
-
   roles:
     - {role: cloud, tags: "cloud"}
     - {role: common, tags: "common"}
     - {role: onlyoffice, tags: "onlyoffice"}
+    - {role: initdb, tags: "initdb"}
     - {role: end, tags: "end"}
