@@ -1,25 +1,34 @@
-## 服务器前置任务（ubuntu使用）
-- name: pre-onlyoffice
+# 核心任务
+- name: OnlyOffice
   hosts: all
   become: yes
   become_method: sudo
-  gather_facts: False
-  pre_tasks:
-    - name: Install Python
-      raw: sudo apt update && sudo apt-get -y install python
-      ignore_errors: yes
+  gather_facts: True
 
-## 部署
-- name: ONLYOFFICE
-  hosts: all
-  become: yes
-  become_method: sudo
+  vars_files:
+    - vars/main.yml
+
+  vars_prompt:
+    - name: 'onlyoffice_selection'
+      prompt: "\nWhich application do you want to install? [ 1/2 ] \n\n
+      1: OnlyOffice\n
+      2: OnlyOffice Document Server\n"
+      private: no
+      default: 1
+
+  vars:
+    onlyoffice_select:
+      '1': True
+      '2': False
+
+    onlyoffice_install: "{{onlyoffice_select[onlyoffice_selection]}}"
+
   roles:
     - {role: role_common, tags: "role_common"}
     - {role: role_cloud, tags: "role_cloud"}
-    - {role: onlyoffice, tags: "onlyoffice"}
-    - {role: role_docker, tags: "role_docker"}
-    - {role: role_docker_onlyofficedocumentserver, tags: "role_docker_onlyofficedocumentserver"}
+    - {role: onlyoffice, tags: "onlyoffice", when: onlyoffice_install }
+    - {role: role_docker, tags: "role_docker", when: not onlyoffice_install }
+    - {role: role_docker_onlyofficedocumentserver, tags: "role_docker_onlyofficedocumentserver", when: not onlyoffice_install}
     - {role: role_init_password, tags: "role_init_password"}
     - {role: role_preend, tags: "role_prend"}
     - {role: role_end, tags: "role_end"}
