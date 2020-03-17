@@ -1,4 +1,8 @@
 ---
+# OnlyOffice need python-urllib3-1.10.2-7, so need to uninstall the latest urllib3 
+- name: uninstall urllib3 latest version
+  shell: pip uninstall urllib3
+  
 - block:
   - name: Download OnlyOffice's auto-install script of Ubuntu&Debian
     get_url:
@@ -23,10 +27,6 @@
     command: /tmp/install-RedHat.sh -os true 
 
   when: ansible_os_family == 'RedHat'
-
-# OnlyOffice need python-urllib3-1.10.2-7, so need to uninstall the latest urllib3 
-- name: uninstall urllib3 latest version
-  shell: pip uninstall urllib3
 
 - name: Delete installation script
   file:
