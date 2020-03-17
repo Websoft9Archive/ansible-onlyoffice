@@ -1,0 +1,33 @@
+#全局
+region: "0"
+
+docker_applications: 
+  - onlyofficedocumentserver
+
+# MySQL 版本和默认密码
+mysql_root_password: "123456"
+
+# 生成应用数据库和用户
+mysql_databases:
+ - name: onlyoffice
+   encoding: utf8
+ 
+mysql_users:
+ - name: onlyoffice
+   host: localhost
+   priv: 'onlyoffice.*:ALL'
+
+# 初始化MySQL root密码
+init_db: 
+    mysql:
+      user: root
+      password: "123456"  
+  
+# 应用数据库信息
+init_application:
+  onlyoffice:
+    service: php-fpm
+    database: onlyoffice 
+    database_user: onlyoffice
+    database_host: localhost
+    database_password: "123456"

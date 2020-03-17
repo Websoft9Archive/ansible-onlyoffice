@@ -2,20 +2,20 @@
 - block:
   - name: Download OnlyOffice's auto-install script of Ubuntu&Debian
     get_url:
-      url: "{{script_url_debian}}"
+      url: "{{onlyoffice_debian_download}}"
       dest: /tmp/
       mode: 0755
     
   - name: install script
     command: /tmp/install-Debian.sh -os true
 
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: ansible_os_family == 'Debian'
 
 
 - block:
   - name: Download OnlyOffice's auto-install script of Redhat&CentOS
     get_url:
-      url: "{{script_url_redhat}}"
+      url: "{{onlyoffice_redhat_download}}"
       dest: /tmp/
       mode: 0755
     
@@ -66,45 +66,3 @@
   file:
     path: /tmp/opensource-install.sh
     state: absent
-
-- name: Create /credentials
-  file:
-    path: /credentials
-    state: directory
-    mode: 0755
-
-- name: Create password.txt
-  template:
-    src: password.txt.j2
-    dest: /credentials/password.txt
-    mode: 0644
-
-- name: Databases Random Password
-  copy: 
-    src: init.sh
-    dest: /root/
-    mode: 0750
-
-# 开机自启脚本设置，其中 Ubuntu需提前创建 rc.local 文件
-- block:
-  - name: Setting rc.local
-    file:
-      path: /etc/rc.local
-      state: touch
-      mode: 0750
-
-  - name: Write rc.local
-    shell: echo "#!/bin/bash" > /etc/rc.local
-
-  - name: restart rc.local
-    service: name=rc.local state=restarted enabled=yes
-
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-# 推送开机自启脚本
-- name: Setting Startup
-  lineinfile:
-    path: /etc/rc.local
-    regexp: '/root/init.sh'
-    line: '/root/init.sh'
-    mode: 0750
