@@ -36,7 +36,7 @@
   shell: grep "Password" /var/www/onlyoffice/WebStudio/web.connections.config | awk -F\; '{print $4}' | awk -F'=' '{print $2}'
   register: reg_root_password
 
-- name: Display default password
+- debug: 
   msg: password is {{reg_root_password}}
 
 - name: Create mysql user named onlyoffice
