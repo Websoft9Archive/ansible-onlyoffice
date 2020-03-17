@@ -24,42 +24,45 @@
 
   when: ansible_os_family == 'RedHat'
 
-
-- name: Delete installation script
-  file:
-    path: /tmp/opensource-install.sh
-    state: absent
-
 # 处理数据库随机密码问题
-# 从/var/www/onlyoffice/WebStudio/web.connections.config 文件中获取数据库密码，然后修改成123456便于随机化。
+
+#添加 onlyoffice 数据库用户，授权，更改 /var/www/onlyoffice/WebStudio/web.connections.config 文件中的数据库配置信息
 - name: get default root password of mysql
   shell: grep "Password" /var/www/onlyoffice/WebStudio/web.connections.config | awk -F\; '{print $4}' | awk -F'=' '{print $2}'
-  register: reg_root_password
+  register: root_password
 
-- name: Display default password
-  msg: password is {{reg_root_password}}
-
-- name: Create mysql user named onlyoffice
+- name: create mysql user "onlyoffice"
   mysql_user:
     name: onlyoffice
     password: "{{root_password.stdout}}"
     login_user: root
     login_password: "{{root_password.stdout}}"
     priv: 'onlyoffice.*:ALL'
-
-- name: Change root user password to 123456
-  mysql_user: 
-    name: root
-    password: "123456"
-    check_implicit_admin: yes
-    login_user: root
-    login_password: "{{root_password.stdout}}"
-    state: present
     
-- name: replace root user in web.connections.config
+- name: replace user id in web.connections.config
   replace:
     path: /var/www/onlyoffice/WebStudio/web.connections.config
     before: ';Password'
     after: 'User ID='
     regexp: 'root'
     replace: 'onlyoffice'
+
+- name: restart mysql monoserve monoserveApiSystem
+  service:
+    name: mysql 
+    state: restarted
+    enabled: yes
+
+- name: restart monoserve
+  service:
+    name: monoserve.service
+    state: restarted
+    enabled: yes
+
+- name: restart monoserveApiSystem.service
+  service: name=monoserveApiSystem.service  state=restarted
+
+- name: Delete script
+  file:
+    path: /tmp/opensource-install.sh
+    state: absent
