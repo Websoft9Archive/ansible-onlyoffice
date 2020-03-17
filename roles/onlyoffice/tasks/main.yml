@@ -42,9 +42,9 @@
 - name: Create mysql user named onlyoffice
   mysql_user:
     name: onlyoffice
-    password: "{{root_password.stdout}}"
+    password: "{{reg_root_password.stdout}}"
     login_user: root
-    login_password: "{{root_password.stdout}}"
+    login_password: "{{reg_root_password.stdout}}"
     priv: 'onlyoffice.*:ALL'
 
 - name: Change root user password to 123456
@@ -53,7 +53,7 @@
     password: "123456"
     check_implicit_admin: yes
     login_user: root
-    login_password: "{{root_password.stdout}}"
+    login_password: "{{reg_root_password.stdout}}"
     state: present
     
 - name: replace root user in web.connections.config
