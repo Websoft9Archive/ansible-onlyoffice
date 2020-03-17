@@ -24,6 +24,9 @@
 
   when: ansible_os_family == 'RedHat'
 
+# OnlyOffice need python-urllib3-1.10.2-7, so need to uninstall the latest urllib3 
+- name: uninstall urllib3 latest version
+  shell: pip uninstall urllib3
 
 - name: Delete installation script
   file:
