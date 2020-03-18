@@ -53,15 +53,6 @@
     login_password: "{{reg_root_password.stdout}}"
     priv: 'onlyoffice.*:ALL'
     
-# 2: Change the passord to 123456 then we can use the role_init_password
-- name: Change root user password to 123456
-  mysql_user: 
-    name: root
-    password: "123456"
-    check_implicit_admin: yes
-    login_user: root
-    login_password: "{{reg_root_password.stdout}}"
-    state: present
     
 - name: replace root user in web.connections.config
   replace:
@@ -70,3 +61,21 @@
     after: 'User ID='
     regexp: 'root'
     replace: 'onlyoffice'
+
+
+- name: include role_init_password
+  include_role:
+    name: role_init_password
+  vars:
+    init_db: 
+        mysql:
+          user: root
+          password: "{{reg_root_password.stdout}}"  
+      
+    init_application:
+      onlyoffice:
+        service: php-fpm
+        database: onlyoffice 
+        database_user: onlyoffice
+        database_host: localhost
+        database_password: "{{reg_root_password.stdout}}"

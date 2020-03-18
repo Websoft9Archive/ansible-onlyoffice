@@ -4,17 +4,3 @@ region: "0"
 docker_applications: 
   - onlyofficedocumentserver
 
-# 初始化MySQL root密码
-init_db: 
-    mysql:
-      user: root
-      password: "123456"  
-  
-# 应用数据库信息
-init_application:
-  onlyoffice:
-    service: php-fpm
-    database: onlyoffice 
-    database_user: onlyoffice
-    database_host: localhost
-    database_password: "123456"
