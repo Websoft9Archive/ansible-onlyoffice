@@ -43,7 +43,7 @@
   register: reg_root_password
 
 - debug: 
-    msg: password is {{reg_root_password}}
+    msg: password is {{reg_root_password.stdout}}
     
 - name: Create mysql user named onlyoffice
   mysql_user:
