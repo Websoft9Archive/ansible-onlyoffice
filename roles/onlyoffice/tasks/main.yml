@@ -79,3 +79,5 @@
         database_user: onlyoffice
         database_host: localhost
         database_password: "{{reg_root_password.stdout}}"
+        config_path: 
+          - /var/www/onlyoffice/WebStudio/web.connections.config
