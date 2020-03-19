@@ -8,7 +8,7 @@
 
 ### Bug Fixes
 
-* 2020-03-17  
+* 2020-03-19  urllib3版本问题
 
 ### Features
 
