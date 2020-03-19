@@ -1,6 +1,4 @@
 ---
-# OnlyOffice need python-urllib3-1.10.2-7, so need to uninstall the latest urllib3 
-
 - name: Create Directory /data/wwwroot/onlyoffice
   file:
     path: /data/wwwroot/onlyoffice
