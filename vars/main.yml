@@ -4,6 +4,7 @@ region: "0"
 # MySQL 版本和默认密码
 mysql_version: "5.7"       
 mysql_root_password: "123456"
+mysql_remote: True
 
 # 生成应用数据库和用户
 mysql_databases:
