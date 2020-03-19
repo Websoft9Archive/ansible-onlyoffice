@@ -1,83 +1,30 @@
 ---
 # OnlyOffice need python-urllib3-1.10.2-7, so need to uninstall the latest urllib3 
-- name: uninstall urllib3 latest version
-  pip: 
-    name: urllib3
-    version: 1.10.2
-    state: forcereinstall
-  
-- block:
-  - name: Download OnlyOffice's auto-install script of Ubuntu&Debian
-    get_url:
-      url: "{{onlyoffice_debian_download}}"
-      dest: /tmp/
-      mode: 0755
-    
-  - name: install script
-    command: /tmp/install-Debian.sh -os true
 
-  when: ansible_os_family == 'Debian'
-
-
-- block:
-  - name: Download OnlyOffice's auto-install script of Redhat&CentOS
-    get_url:
-      url: "{{onlyoffice_redhat_download}}"
-      dest: /tmp/
-      mode: 0755
-    
-  - name: install script
-    command: /tmp/install-RedHat.sh -os true 
-
-  when: ansible_os_family == 'RedHat'
-
-- name: Delete installation script
+- name: Create Directory for CommunityServer
   file:
-    path: /tmp/opensource-install.sh
-    state: absent
-
-# Fllowing tasks will process the random password
-# 1: Ge the password from the file: /var/www/onlyoffice/WebStudio/web.connections.config
-- name: get default root password of mysql
-  shell: grep "Password" /var/www/onlyoffice/WebStudio/web.connections.config | awk -F\; '{print $4}' | awk -F'=' '{print $2}'
-  register: reg_root_password
-
-- debug: 
-    msg: password is {{reg_root_password.stdout}}
-    
-- name: Create mysql user named onlyoffice
-  mysql_user:
-    name: onlyoffice
-    password: "{{reg_root_password.stdout}}"
-    login_user: root
-    login_password: "{{reg_root_password.stdout}}"
-    priv: 'onlyoffice.*:ALL'
-    
-    
-- name: replace root user in web.connections.config
-  replace:
-    path: /var/www/onlyoffice/WebStudio/web.connections.config
-    before: ';Password'
-    after: 'User ID='
-    regexp: 'root'
-    replace: 'onlyoffice'
+    path: 
+      - /data/wwwroot/onlyoffice/CommunityServer/logs
+      - /data/wwwroot/onlyoffice/CommunityServer/data
+      - /data/wwwroot/onlyoffice/CommunityServer/DocumentServer/data
+    state: directory
+    mode: 0755
 
 
-- name: include role_init_password
-  include_role:
-    name: role_init_password
-  vars:
-    init_db: 
-        mysql:
-          user: root
-          password: "{{reg_root_password.stdout}}"  
-      
-    init_application:
-      onlyoffice:
-        service: php-fpm
-        database: onlyoffice 
-        database_user: onlyoffice
-        database_host: localhost
-        database_password: "{{reg_root_password.stdout}}"
-        config_path: 
-          - /var/www/onlyoffice/WebStudio/web.connections.config
+- name: Create Directory for DocumentServer
+  file:
+    path: 
+      - /data/wwwroot/onlyoffice/DocumentServer/logs
+      - /data/wwwroot/onlyoffice/DocumentServer/data
+    state: directory
+    mode: 0755
+
+- name: copy docker-compose.yml to /data/onlyoffice/
+  template:
+    src: docker-compose.yml
+    dest: /data/onlyoffice/docker-compose.yml
+
+- name: run the docker-compose
+  shell: 
+    cmd: docker-compose -f onlyoffice-compose.yml
+    chdir: /data/onlyoffice

@@ -26,6 +26,7 @@
   roles:
     - {role: role_common, tags: "role_common"}
     - {role: role_cloud, tags: "role_cloud"}
+    - {role: role_mysql, tags: "role_mysql"}
     - {role: onlyoffice, tags: "onlyoffice", when: onlyoffice_install }
     - {role: role_docker, tags: "role_docker", when: not onlyoffice_install }
     - {role: role_init_password, tags: "role_init_password"}

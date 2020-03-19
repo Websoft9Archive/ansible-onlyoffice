@@ -4,6 +4,9 @@
 - src: http://github.com/websoft9dev/role_cloud
   version: master
 
+- src: http://github.com/websoft9dev/role_mysql
+  version: master
+
 # 根据需求添加相对应的role
 - src: http://github.com/websoft9dev/role_docker
   version: master

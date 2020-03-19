@@ -1,3 +1,5 @@
-#onlyoffice 官方提供两种安装脚本
-onlyoffice_debian_download: https://download.onlyoffice.com/install/install-Debian.sh
-onlyoffice_redhat_download: https://download.onlyoffice.com/install/install-RedHat.sh
+
+docker_applications: 
+  - phpmyadmin
+
+mysql_remote: True

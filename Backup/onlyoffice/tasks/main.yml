@@ -1,4 +1,11 @@
 ---
+# OnlyOffice need python-urllib3-1.10.2-7, so need to uninstall the latest urllib3 
+- name: uninstall urllib3 latest version
+  pip: 
+    name: urllib3
+    version: 1.10.2
+    state: forcereinstall
+  
 - block:
   - name: Download OnlyOffice's auto-install script of Ubuntu&Debian
     get_url:
@@ -24,22 +31,30 @@
 
   when: ansible_os_family == 'RedHat'
 
-# 处理数据库随机密码问题
+- name: Delete installation script
+  file:
+    path: /tmp/opensource-install.sh
+    state: absent
 
-#添加 onlyoffice 数据库用户，授权，更改 /var/www/onlyoffice/WebStudio/web.connections.config 文件中的数据库配置信息
+# Fllowing tasks will process the random password
+# 1: Ge the password from the file: /var/www/onlyoffice/WebStudio/web.connections.config
 - name: get default root password of mysql
   shell: grep "Password" /var/www/onlyoffice/WebStudio/web.connections.config | awk -F\; '{print $4}' | awk -F'=' '{print $2}'
-  register: root_password
+  register: reg_root_password
 
-- name: create mysql user "onlyoffice"
+- debug: 
+    msg: password is {{reg_root_password.stdout}}
+    
+- name: Create mysql user named onlyoffice
   mysql_user:
     name: onlyoffice
-    password: "{{root_password.stdout}}"
+    password: "{{reg_root_password.stdout}}"
     login_user: root
-    login_password: "{{root_password.stdout}}"
+    login_password: "{{reg_root_password.stdout}}"
     priv: 'onlyoffice.*:ALL'
     
-- name: replace user id in web.connections.config
+    
+- name: replace root user in web.connections.config
   replace:
     path: /var/www/onlyoffice/WebStudio/web.connections.config
     before: ';Password'
@@ -47,22 +62,22 @@
     regexp: 'root'
     replace: 'onlyoffice'
 
-- name: restart mysql monoserve monoserveApiSystem
-  service:
-    name: mysql 
-    state: restarted
-    enabled: yes
 
-- name: restart monoserve
-  service:
-    name: monoserve.service
-    state: restarted
-    enabled: yes
-
-- name: restart monoserveApiSystem.service
-  service: name=monoserveApiSystem.service  state=restarted
-
-- name: Delete script
-  file:
-    path: /tmp/opensource-install.sh
-    state: absent
+- name: include role_init_password
+  include_role:
+    name: role_init_password
+  vars:
+    init_db: 
+        mysql:
+          user: root
+          password: "{{reg_root_password.stdout}}"  
+      
+    init_application:
+      onlyoffice:
+        service: php-fpm
+        database: onlyoffice 
+        database_user: onlyoffice
+        database_host: localhost
+        database_password: "{{reg_root_password.stdout}}"
+        config_path: 
+          - /var/www/onlyoffice/WebStudio/web.connections.config
