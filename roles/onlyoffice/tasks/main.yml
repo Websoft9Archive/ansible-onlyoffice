@@ -1,21 +1,9 @@
 ---
 # OnlyOffice need python-urllib3-1.10.2-7, so need to uninstall the latest urllib3 
 
-- name: Create Directory for CommunityServer
+- name: Create Directory /data/wwwroot/onlyoffice
   file:
-    path: 
-      - /data/wwwroot/onlyoffice/CommunityServer/logs
-      - /data/wwwroot/onlyoffice/CommunityServer/data
-      - /data/wwwroot/onlyoffice/CommunityServer/DocumentServer/data
-    state: directory
-    mode: 0755
-
-
-- name: Create Directory for DocumentServer
-  file:
-    path: 
-      - /data/wwwroot/onlyoffice/DocumentServer/logs
-      - /data/wwwroot/onlyoffice/DocumentServer/data
+    path: /data/wwwroot/onlyoffice
     state: directory
     mode: 0755
 
