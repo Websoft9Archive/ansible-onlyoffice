@@ -20,15 +20,22 @@
     onlyoffice_select:
       '1': True
       '2': False
+    
+    docker_apps_select:
+      '1': phpmyadmin
+      '2': onlyofficedocumentserver
 
     onlyoffice_install: "{{onlyoffice_select[onlyoffice_selection]}}"
+    
+    docker_applications: 
+      - "{{docker_apps_select[onlyoffice_selection]}}"
 
   roles:
     - {role: role_common, tags: "role_common"}
     - {role: role_cloud, tags: "role_cloud"}
-    - {role: role_mysql, tags: "role_mysql"}
+    - {role: role_mysql, tags: "role_mysql", when: onlyoffice_install }
     - {role: role_docker, tags: "role_docker"}
     - {role: onlyoffice, tags: "onlyoffice", when: onlyoffice_install }
-    - {role: role_init_password, tags: "role_init_password"}
+    - {role: role_init_password, tags: "role_init_password", when: onlyoffice_install }
     - {role: role_preend, tags: "role_prend"}
     - {role: role_end, tags: "role_end"}
