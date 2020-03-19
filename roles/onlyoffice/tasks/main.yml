@@ -22,9 +22,9 @@
 - name: copy docker-compose.yml to /data/onlyoffice/
   template:
     src: docker-compose.yml
-    dest: /data/onlyoffice/docker-compose.yml
+    dest: /data/wwwroot/onlyoffice
 
 - name: run the docker-compose
   shell: 
     cmd: docker-compose -f onlyoffice-compose.yml
-    chdir: /data/onlyoffice
+    chdir: /data/wwwroot/onlyoffice
