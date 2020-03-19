@@ -26,5 +26,5 @@
 
 - name: run the docker-compose
   shell: 
-    cmd: docker-compose -f docker-compose.yml
+    cmd: docker-compose up
     chdir: /data/wwwroot/onlyoffice
