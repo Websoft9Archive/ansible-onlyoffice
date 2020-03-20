@@ -1,5 +1,10 @@
-
+# for docker installation
 docker_applications: 
   - phpmyadmin
 
 mysql_remote: True
+
+
+# for script installation
+onlyoffice_debian_download: https://download.onlyoffice.com/install/install-Debian.sh
+onlyoffice_redhat_download: https://download.onlyoffice.com/install/install-RedHat.sh
