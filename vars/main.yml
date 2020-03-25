@@ -16,6 +16,9 @@ mysql_users:
    host: localhost
    priv: 'onlyoffice.*:ALL'
 
+docker_applications: 
+  - onlyofficedocumentserver
+
 # 初始化MySQL root密码
 init_db: 
     mysql:

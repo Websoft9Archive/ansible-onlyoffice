@@ -20,15 +20,13 @@
     onlyoffice_select:
       '1': True
       '2': False
-    
-    docker_apps_select:
-      '1': phpmyadmin
-      '2': onlyofficedocumentserver
 
     onlyoffice_install: "{{onlyoffice_select[onlyoffice_selection]}}"
-    
-    docker_applications: 
-      - "{{docker_apps_select[onlyoffice_selection]}}"
+  
+  pre_tasks:
+    - set_fact:
+        docker_applications: ""
+      when: not onlyoffice_install
 
   roles:
     - {role: role_common, tags: "role_common"}
