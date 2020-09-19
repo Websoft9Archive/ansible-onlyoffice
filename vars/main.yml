@@ -13,7 +13,6 @@ mysql_databases:
  
 mysql_users:
  - name: onlyoffice
-   host: localhost
    priv: 'onlyoffice.*:ALL'
 
 docker_applications: 
