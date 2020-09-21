@@ -1,22 +1,20 @@
 # 账号密码
 
-使用Nextcloud，可能会用到的几组账号密码如下：
+通过**SSH**连接云服务器，运行 `sudo cat /credentials/password.txt` 命令，查看所有相关账号和密码
 
-## Nextcloud
+![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/catdbpassword-websoft9.png)
 
-在初始化安装的时候由用户自行设置
+下面列出可能需要用到的几组账号密码：
+
+## ONLYOFFICE
+
+* 管理员账号: `admin`
+* 管理员密码: `admin` 或 存储在您的服务器中的文件中 */credentials/password.txt*  
 
 ## MySQL
 
 * 管理员账号：*`root`*
-* 管理员密码：存储在您的服务器指定文件中（ */credentials/password.txt* ）
-   ![运行cat命令](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/catdbpassword-websoft9.png)
-
-  建议通过云控制台的命令终端，运行`cat /credentials/password.txt` 获取数据库密码（参上图）
-
-  **注意**：旧版本 Nextcloud 上，不存在 password.txt 文件，其数据库密码是 `123456`。请在初始化安装之前务必将数据库密码修改成复杂密码，这样有助于提高数据库的安全性。
-
-> 需要登录MySQL，请参考 [MySQL可视化管理](/zh/admin-mysql.md)
+* 管理员密码：存储在您的服务器中的文件中 */credentials/password.txt*  
 
 ## Linux
 
@@ -28,5 +26,6 @@
    | --- | --- | --- |
    |  Azure   |  创建服务器的时候自行设置   | [如何开启root账户？](https://support.websoft9.com/docs/azure/zh/server-login.html#示例2：启用系统root账号) |
    |  AWS Centos 系统   |  centos   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号) |
+   |  AWS AmazonLinux 系统   | ec2-user   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号) |
    |  AWS Ubuntu 系统  |  ubuntu   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号)  |
    |  阿里云，华为云，腾讯云   |  root   | |

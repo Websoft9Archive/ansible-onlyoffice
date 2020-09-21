@@ -1,11 +1,11 @@
 # 部署
 
-**部署就是将 Nextcloud 预装环境在线复制到你的云服务器中**。例如：用户在云平台购买 Nextcloud 之后，云平台就会自动将 Nextcloud 复制到对应的云服务器。
+**部署就是将 ONLYOFFICE 预装包在线复制到你的云服务器中**。例如：用户在云平台购买 ONLYOFFICE 之后，云平台就会自动将 ONLYOFFICE 复制到对应的云服务器。
 
-- 如果已经部署 Nextcloud，请进入[初始化安装](/zh/stack-installation.md) ，完成相关操作。
-- 如果没有部署 Nextcloud，需要先将 Nextcloud 部署到您的云服务器。
+- 如果已经部署 ONLYOFFICE，请进入[初始化安装](/zh/stack-installation.md) ，完成相关操作。
+- 如果没有部署 ONLYOFFICE，需要先将 ONLYOFFICE 部署到您的云服务器。
 
-我们提供了两种 Nextcloud 部署方案，部署过程是全自动化的，用户启动部署后，等待结果即可：
+我们提供了两种 ONLYOFFICE 部署方案，部署过程是全自动化的，用户启动部署后，等待结果即可：
 
 ## 镜像一键部署
 
@@ -13,17 +13,17 @@
 
 对有云服务器使用经验的用户来说，镜像部署可以等同于“一键部署”。
 
-我们在主流的云平台上发布了 [Nextcloud 镜像](https://apps.websoft9.com/nextcloud)供用户使用。云平台一般支持三种镜像部署方式：
+我们在主流的云平台上发布了 [ONLYOFFICE 镜像](https://apps.websoft9.com/onlyoffice)供用户使用。云平台一般支持三种镜像部署方式：
 
-* 在 **选购新服务器** 的时候，找到并选取 Nextcloud 镜像作为服务器启动环境
-* 在 **云市场（Marketplace）**  的 Nextcloud 商品页面直接购买镜像
-* 对于已有服务器，通过 **更换镜像（重装系统）** 的操作，将已有镜像替换为 Nextcloud 镜像。
+* 在 **选购新服务器** 的时候，找到并选取 ONLYOFFICE 镜像作为服务器启动环境
+* 在 **云市场（Marketplace）**  的 ONLYOFFICE 商品页面直接购买镜像
+* 对于已有服务器，通过 **更换镜像（重装系统）** 的操作，将已有镜像替换为 ONLYOFFICE 镜像。
 
 ## 脚本自动化部署
 
 **脚本部署**是指在云服务器上运行一段脚本程序，它会**自动地**将预装包在线下载到云服务器，并完成预配置
 
-我们在 Github上发布了 [Nextcloud 自动化部署脚本](https://github.com/Websoft9/ansible-nextcloud)，脚本基于 Ansible 编写。只要熟悉 Ansible，便可以实现 **无人值守（全自动化）** 的方式将 Nextcloud 部署到服务器。
+我们在 Github上发布了 [ONLYOFFICE 自动化部署脚本](https://github.com/Websoft9/ansible-onlyoffice)，脚本基于 Ansible 编写。只要熟悉 Ansible，便可以实现 **无人值守（全自动化）** 的方式将 ONLYOFFICE 部署到服务器。
 
 ## 对比
 

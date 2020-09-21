@@ -1,5 +1,7 @@
 ---
 # OnlyOffice need python-urllib3-1.10.2-7, so need to uninstall the latest urllib3 
+# This playbook is under maintenance status, no update any more
+
 - name: uninstall urllib3 latest version
   pip: 
     name: urllib3

@@ -1,0 +1,3 @@
+- name: check_onlyoffice_service
+  debug:
+    var: check_onlyoffice_service.stdout

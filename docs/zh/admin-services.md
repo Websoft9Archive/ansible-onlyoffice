@@ -1,38 +1,17 @@
 # 服务启停
 
-使用由Websoft9提供的 Nextcloud 部署方案，可能需要用到的服务如下：
+使用由Websoft9提供的 ONLYOFFICE 部署方案，可能需要用到的服务如下：
 
-### Apache
-
-```shell
-#For Centos&Redhat
-sudo systemctl start httpd
-sudo systemctl stop httpd
-sudo systemctl restart httpd
-sudo systemctl status httpd
-
-#For Ubuntu&Debian
-sudo systemctl start apache2
-sudo systemctl stop apache2
-sudo systemctl restart apache2
-sudo systemctl status apache2
-```
-
-### Nginx
+### ONLYOFFICE
 
 ```shell
-sudo systemctl start nginx
-sudo systemctl stop nginx
-sudo systemctl restart nginx
-sudo systemctl status nginx
-```
+sudo systemctl start onlyoffice-server
+sudo systemctl stop onlyoffice-server
+sudo systemctl restart onlyoffice-server
+sudo systemctl status onlyoffice-server
 
-### PHP-FPM
-```shell
-systemctl start php-fpm
-systemctl stop php-fpm
-systemctl restart php-fpm
-systemctl status php-fpm
+# you can use this debug mode if ONLYOFFICE service can't run
+onlyoffice-server console
 ```
 
 ### MySQL
@@ -45,17 +24,10 @@ sudo systemctl status mysql
 ```
 
 ### Redis
-```shell
-sudo systemctl start redis
-sudo systemctl stop redis
-sudo systemctl restart redis
-sudo systemctl status redis
-```
 
-### Docker
 ```shell
-sudo systemctl start docker
-sudo systemctl stop redis
-sudo systemctl restart redis
-sudo systemctl status redis
+systemctl start redis
+systemctl stop redis
+systemctl restart redis
+systemctl status redis
 ```

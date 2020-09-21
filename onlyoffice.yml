@@ -1,4 +1,3 @@
-# 核心任务
 - name: OnlyOffice
   hosts: all
   become: yes

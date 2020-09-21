@@ -1,96 +1,65 @@
 # Parameters
 
-The OnlyOffice deployment package contains a sequence software (referred to as "components") required for Nextcloud to run. The important information such as the component name, installation directory path, configuration file path, port, version, etc. are listed below.
+The ONLYOFFICE deployment package contains a sequence of software (referred to as "components") required for ONLYOFFICE to run. Below list the important information, the component name, installation directory path, configuration file path, port, version, etc.
 
 ## Path
 
-### OnlyOffice
+### ONLYOFFICE
 
-OnlyOffice installation directory: */var/www/onlyoffice* 
-
-### OnlyOffice DocumentServer
-OnlyOffice DocumentServer installation directory: */var/www/onlyoffice/documentserver*  
-OnlyOffice data directory: */var/www/onlyoffice/DocumentServerData*  
+ONLYOFFICE installation directory:  */data/onlyoffice*  
+ONLYOFFICE logs directory:  */data/logs/onlyoffice*  
 
 ### Nginx
 
-OnlyOffice on LEMP, the Web Server is Nginx    
+Nginx vhost configuration file: */etc/nginx/conf.d/default.conf*    
+Nginx main configuration file: */etc/nginx/nginx.conf*   
+Nginx logs file: */var/log/nginx*  
+Nginx rewrite rules directory: */etc/nginx/conf.d/rewrite* 
 
-Nginx vhost configuration file: */etc/nginx/sites-available/onlyoffice*  
-Nginx main configuration file: */etc/nginx/nginx.conf*  
-Nginx logs file: */var/log/nginx/*
-
-### NodeJS
-Module Path: /usr/lib/node_modules
-
-### Mono
-Mono configration file: */etc/mono/config*
-
-### MYSQL
+### MySQL
 
 MySQL installation directory: */usr/local/mysql*  
-MySQL data directory: */var/lib/mysql*  
-MySQL configuration file: */etc/mysql/mysql.conf.d*    
-MySQL Web Management URL: *http://Internet IP/phpmyadmin*, [get credential](/stack-accounts.md) 
-
-### Redis
-
-Redis configuration file: */etc/redis/redis.conf*  
-Redis data directory: */var/lib/redis*  
-Redis logs file: */var/log/redis/redis-server.log*
-
-### Docker
-
-OnlyOffice Document Server on Docker included in this stack
+MySQL data directory: */data/mysql*  
+MySQL configuration file: */etc/my.cnf*    
+MySQL Web Management URL: *http://Internet IP/9panel*, get credential from [Username and Password](/stack-accounts.md)
 
 ## Ports
 
-You can control(open or shut down) ports by **[Security Group Setting](https://support.websoft9.com/docs/faq/zh/tech-instance.html)** of your Cloud Server whether the port can be accessed from Internet.
-
-These ports should be opened for this application:
+Open or close ports by **[Security Group Setting](https://support.websoft9.com/docs/faq/zh/tech-instance.html)** of your Cloud Server to decide whether the port can be accessed from Internet.
+You can run the cmd `netstat -tunlp` to check all related ports.  
+The following are the ports you may use.
 
 | Name | Number | Use |  Necessity |
 | --- | --- | --- | --- |
-| MySQL | 3306 | Remote connect MySQL | Optional |
-| HTTP | 80 | HTTP requests for OnlyOffice | Required |
-| HTTPS | 443 | HTTPS requests OnlyOffice | Optional |
-| Docker | 8080 | OnlyOffice Document Server on Docker | Optional |
+| HTTP | 8161 | HTTP requests for ONLYOFFICE Console| Required |
+| HTTPS | 5672 | epmd | Optional |
+| TCP | 55672 | Erlang distribution | Optional |
+
 
 ## Version
 
-You can see the version from product page of Marketplace. However, after being deployed to your server, the components will be automatically updated, resulting in a certain change in the version number. Therefore, the exact version number should be viewed by running the command on the server:
+You can see the version on product pages at Marketplace. However, after being deployed to your server, the components will be updated automatically, resulting in a certain change in the version number. Therefore, run the command on the server to view the exact version number. 
 
 ```shell
+# Check all components version
+sudo cat /data/logs/install_version.txt
+
 # Linux Version
 lsb_release -a
 
-# PHP Version
-php -v
-
-# List Installed PHP Modules
-php -m
-
-# Apache version on Centos
-httpd -v
-
-# Apache version on Ubuntu
-apache2 -v
-
-# List Installed Apache Modules
-apachectl -M
-
-# Nginx version
-nginx -v
-
-# List Installed Nginx Modules
+# Nginx  Version
 nginx -V
 
-# MySQL version:
-mysql -V
+# Java version
+java -v
 
-# Redis version
-redis-server -v
+# Docker Version
+docker -v
 
-# Dokcer:
-docker --version
+# erlang  Version
+yum info erlang
+apt show erlang
+
+# ONLYOFFICE version
+onlyofficectl status | grep ONLYOFFICE*
 ```
