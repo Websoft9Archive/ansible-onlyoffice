@@ -2,6 +2,7 @@
 # refer to: https://github.com/ONLYOFFICE/Docker-CommunityServer/blob/master/docker-compose.yml
 # ONLYOFFICE COMMUNITY EDITION= community server + document server + mail server
 # This playbook have not mail server
+# The environment item's value should not include "", otherwise mysql can't connected
 
 version: '2'
 services:
