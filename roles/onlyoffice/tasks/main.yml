@@ -23,7 +23,7 @@
 
 - name: Run the docker-compose
   shell: 
-    cmd: docker-compose up
+    cmd: docker-compose up -d
     chdir: /data/wwwroot/onlyoffice
 
 - name: Create a symbolic link
