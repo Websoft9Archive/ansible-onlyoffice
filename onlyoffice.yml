@@ -37,4 +37,3 @@
     - {role: role_init, tags: "role_init", when: onlyoffice_install }
     - {role: role_preend, tags: "role_preend"}
     - {role: role_end, tags: "role_end"}
-    - {role: role_end, tags: "role_end"}
