@@ -9,11 +9,11 @@ services:
     container_name: onlyoffice
     image: onlyoffice/communityserver:latest
     environment:
-      - MYSQL_SERVER_HOST="{{docker_gateway.stdout}}"
-      - MYSQL_SERVER_PORT="{{onlyoffice_db_port}}"
-      - MYSQL_SERVER_DB_NAME="{{onlyoffice_db_database}}"
-      - MYSQL_SERVER_USER="{{onlyoffice_db_user}}"
-      - MYSQL_SERVER_PASS="{{onlyoffice_db_password}}"
+      - MYSQL_SERVER_HOST={{docker_gateway.stdout}}
+      - MYSQL_SERVER_PORT={{onlyoffice_db_port}}
+      - MYSQL_SERVER_DB_NAME={{onlyoffice_db_database}}
+      - MYSQL_SERVER_USER={{onlyoffice_db_user}}
+      - MYSQL_SERVER_PASS={{onlyoffice_db_password}
       - DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-documentserver
     stdin_open: true
     restart: always
