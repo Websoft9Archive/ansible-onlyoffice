@@ -20,7 +20,7 @@ services:
     volumes:
       - /data/wwwroot/onlyoffice/communityserver/logs:/var/log/onlyoffice
       - /data/wwwroot/onlyoffice/communityserver/data:/var/www/onlyoffice/Data
-      - /apps/onlyoffice/onlyofficedocumentserver/data:/var/www/onlyoffice/DocumentServerData
+      - /data/wwwroot/onlyoffice/communityserver/documentserverdata:/var/www/onlyoffice/DocumentServerData
     ports:
       - '9003:80'
       - '5222:5222'
