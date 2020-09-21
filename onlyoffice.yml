@@ -30,9 +30,11 @@
   roles:
     - {role: role_common, tags: "role_common"}
     - {role: role_cloud, tags: "role_cloud"}
+    - {role: role_nginx, tags: "role_nginx"}
     - {role: role_mysql, tags: "role_mysql", when: onlyoffice_install }
     - {role: role_docker, tags: "role_docker"}
     - {role: onlyoffice, tags: "onlyoffice", when: onlyoffice_install }
     - {role: role_init, tags: "role_init", when: onlyoffice_install }
-    - {role: role_preend, tags: "role_prend"}
+    - {role: role_preend, tags: "role_preend"}
+    - {role: role_end, tags: "role_end"}
     - {role: role_end, tags: "role_end"}
