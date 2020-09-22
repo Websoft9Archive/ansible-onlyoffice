@@ -15,3 +15,17 @@ COMMUNITY EDITION 是一个完全免费的版本。DEVELOPER EDITION 是一个�
 ## 安装方式
 
 基于未来扩展的考虑，采用 Docker 安装较为合适
+
+### 坑
+
+1. MySQL 需要额外配置，否则创建的数据库内容报错
+```
+echo "[mysqld]
+sql_mode = 'NO_ENGINE_SUBSTITUTION'
+max_connections = 1000
+max_allowed_packet = 1048576000
+group_concat_max_len = 2048
+log-error = /var/log/mysql/error.log" > /app/onlyoffice/mysql/conf.d/onlyoffice.cnf
+```
+
+2. 

@@ -34,3 +34,12 @@
   with_items:
     - {src: "/data/wwwroot/onlyoffice/docker-compose.yml",dest: "/data/config/apps-onlyoffice-compose.yml"}
     - {src: "/data/apps/onlyofficedocumentserver",dest: "/data/wwwroot/onlyoffice/onlyofficedocumentserver"}
+
+
+- name: Check ONLYOFFICE Version
+  shell: sudo sh -c "docker image inspect onlyoffice/communityserver  | grep onlyoffice.community.version | sed -n 1p  1>> /data/logs/install_version.txt"
+
+- name: Check ONLYOFFICE Service
+  shell: sudo docker ps | grep onlyofficecommunityserver
+  register: check_onlyoffice_service
+  notify: check_onlyoffice_service

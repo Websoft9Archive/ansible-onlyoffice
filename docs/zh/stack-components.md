@@ -10,8 +10,19 @@ ONLYOFFICE 预装包包含 ONLYOFFICE 运行所需一序列支撑软件（简称
 
 ### ONLYOFFICE
 
-ONLYOFFICE 安装目录： */data/onlyoffice*  
-ONLYOFFICE 日志目录： */data/logs/onlyoffice*  
+本项目中的 ONLYOFFICE 是由：ONLYOFFICE Community Server 和 ONLYOFFICE Document Server 组成，它们均基于 Docker 安装，并完成了集成。
+
+#### ONLYOFFICE Community Server
+
+ONLYOFFICE Community Server存储目录： */data/wwwroot/communityserver*  
+ONLYOFFICE docker-compose 文件路径： */data/wwwroot/onlyoffice/docker-compose.yml*  
+ONLYOFFICE 日志目录： */data/wwwroot/onlyoffice/communityserver/logs*
+
+#### ONLYOFFICE Document Server
+
+ONLYOFFICE Document Server存储目录： */data/apps/onlyofficedocumentserver*  
+ONLYOFFICE docker-compose 文件路径： */data/apps/onlyofficedocumentserver/docker-compose.yml*  
+ONLYOFFICE 日志目录： */data/apps/onlyofficedocumentserver/logs*
 
 ### Nginx
 
@@ -24,8 +35,16 @@ Nginx 伪静态规则目录： */etc/nginx/conf.d/rewrite*
 
 MySQL 安装路径: */usr/local/mysql*  
 MySQL 数据文件 */data/mysql*  
-MySQL 配置文件: */etc/my.cnf*    
-MySQL 可视化管理地址: *http://服务器公网IP/phpmyadmin*，用户名和密码请见 [账号密码](/zh/stack-accounts.md) 章节。
+MySQL 配置文件: */etc/my.cnf*  
+
+MySQL 可视化管理参考 [MySQL 管理](/zh/admin-mysql.md) 章节。
+
+###  phpMyAdmin
+
+phpMyAdmin 是一款可视化 MySQL 管理工具，在本项目中它基于 Docker 安装。  
+
+phpMyAdmin directory：*/data/apps/phpmyadmin*  
+phpMyAdmin docker compose file：*/data/apps/phpmyadmin/docker-compose.yml*  
 
 ## 端口号
 
@@ -33,11 +52,14 @@ MySQL 可视化管理地址: *http://服务器公网IP/phpmyadmin*，用户名�
 
 通过命令`netstat -tunlp` 看查看相关端口，下面列出可能要用到的端口：
 
-| 名称 | 端口号 | 用途 |  必要性 |
+| 类型 | 端口号 | 用途 |  必要性 |
 | --- | --- | --- | --- |
-| HTTP | 15672 | 通过 HTTP 访问 ONLYOFFICE 控制台 | 可选 |
-| TCP | 5672 | epmd | 可选 |
-| TCP | 55672 | Erlang distribution | 可选 |
+| TCP | 80 | 通过 HTTP 访问 ONLYOFFICE | 必须 |
+| TCP | 443 | 通过 HTTPS 访问 ONLYOFFICE | 可选 |
+| TCP | 3306 | 远程连接 MySQL | 可选 |
+| TCP | 9003 | 通过端口访问 ONLYOFFICE | 可选 |
+| TCP | 9002 | ONLYOFFICE Document Server on Docker | 可选 |
+| TCP | 9090 | phpMyAdmin on Docker | 可选 |
 
 ## 版本号
 
@@ -53,16 +75,18 @@ lsb_release -a
 # Nginx  Version
 nginx -V
 
-# Java version
-java -v
-
 # Docker Version
 docker -v
 
-# erlang  Version
-yum info erlang
-apt show erlang
-
 # ONLYOFFICE version
 onlyofficectl status | grep ONLYOFFICE*
+
+# Dokcer version
+docker --version
+
+# MySQL version
+mysql -V
+
+# ONLYOFFICE Community Server version
+docker image inspect onlyoffice/communityserver  | grep onlyoffice.community.version | sed -n 1p
 ```

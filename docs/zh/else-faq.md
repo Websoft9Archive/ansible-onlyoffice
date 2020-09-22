@@ -1,15 +1,29 @@
 # FAQ
 
-#### 如何以调试模式启动ONLYOFFICE服务？
+#### ONLYOFFICE 是否支持中文？
 
-```
-systemctl stop onlyoffice-server
-onlyoffice-server console
-```
+支持，可以在线切换多种语言
 
-#### 是否可以通过命令行修改ONLYOFFICE后台密码？
+#### Community Edition vs Enterprise Edition？
 
-可以，`onlyofficectl change_password  admin newpassword`
+参考官方说明 [Compare Community Edition and Enterprise Edition](https://github.com/ONLYOFFICE/CommunityServer#compare-community-edition-and-enterprise-edition)
+
+#### 能否介绍 ONLYOFFICE 各种版本的关系？
+
+OnlyOffice的产品家族比较复杂，根据官方的介绍，可以分为：
+
+* ENTERPRISE EDITION：企业版
+* COMMUNITY EDITION：开源版
+* INTEGRATION EDITION：比如集成了 ownCloud 的版本
+* DEVELOPER EDITION：开发者版本
+
+其中每一个版本都是由：Community Server, Document Server, Mail Server 组成。  
+
+COMMUNITY EDITION 是一个完全免费的版本。DEVELOPER EDITION 是适用于开发者的[收费版本](https://www.onlyoffice.com/zh/developer-edition-prices.aspx)。
+
+#### 数据库密码可以修改吗？
+
+可以，但是修改后需要同步修改 ONLYOFFICE docker-compose 文件，然后通过 docker-compose 重新运行容器。
 
 #### 如果没有域名是否可以部署 ONLYOFFICE？
 
@@ -25,7 +39,7 @@ onlyoffice-server console
 
 #### 如何禁止外界访问phpMyAdmin？
 
-连接服务器，编辑 [phpMyAdmin 配置文件](/zh/stack-components.md#phpmyadmin)，将其中的 `Require all granted` 更改为 `Require ip 192.160.1.0`，然后重启 Apache 服务
+服务器安全组中关闭 9090 端口即可
 
 #### 是否可以修改ONLYOFFICE的源码路径？
 
@@ -35,10 +49,10 @@ onlyoffice-server console
 
 ```shell
 # 拥有者
-chown -R apache.apache /data/wwwroot/
+chown -R apache.apache /data/wwwroot/onlyoffice
 # 读写执行权限
-find /data/wwwroot/ -type d -exec chmod 750 {} \;
-find /data/wwwroot/ -type f -exec chmod 640 {} \;
+find /data/wwwroot/onlyoffice -type d -exec chmod 750 {} \;
+find /data/wwwroot/onlyoffice -type f -exec chmod 640 {} \;
 ```
 
 #### 部署和安装有什么区别？

@@ -6,7 +6,7 @@
 - 操作系统打个补丁常称之为**更新**，Ubuntu16.04 变更为 Ubuntu18.04，称之为**升级**
 - MySQL5.6.25-->MySQL5.6.30 常称之为**更新**，MySQL5.6->MySQL5.7 称之为**升级**
 
-ONLYOFFICE 完整的更新升级包括：系统级更新（操作系统和运行环境）和 ONLYOFFICE 程序升级两种类型
+ONLYOFFICE 更新升级包括：系统级更新（操作系统和运行环境）和 ONLYOFFICE 程序升级两种类型
 
 ## 系统级更新
 
@@ -24,4 +24,25 @@ yum update -y --skip-broken
 
 ## ONLYOFFICE升级
 
-详情参考官方升级文档：[Upgrading ONLYOFFICE](https://www.onlyoffice.com/upgrade.html)
+升级是一件系统工程，请在升级前务必做好快照备份。
+
+我们针对于官方升级文档 [Upgrading ONLYOFFICE Community Server](https://github.com/ONLYOFFICE/Docker-CommunityServer#upgrading-onlyoffice-community-server) 提供可操作的升级方案，具体如下：
+
+1. 做好服务器的快照备份
+
+2. 删除当前 ONLYOFFICE Community Server 容器
+   ```
+   cd /data/wwwroot/onlyoffice
+   sudo docker-compose down -v
+   ```
+
+3. 删除当前 ONLYOFFICE Community Server 镜像
+   ```
+   docker image rm onlyoffice/communityserver
+   ```
+
+4. 重新启动容器
+   ```
+   cd /data/wwwroot/onlyoffice
+   sudo docker-compose up -d
+   ```

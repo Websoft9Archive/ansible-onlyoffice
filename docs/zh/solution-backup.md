@@ -54,8 +54,8 @@ sidebarDepth: 3
 ```
 通用的手动备份操作步骤如下：
 
-1. 通过 SFTP 将网站目录（*/data/wwwroot/*）**压缩后**再完整的下载到本地
-2. 通过 phpMyAdmin 逐个导出数据库
+1. 通过 SFTP 将网站目录（*/data/wwwroot/onlyoffice*）**压缩后**再完整的下载到本地
+2. 通过 phpMyAdmin导出 ONLYOFFICE 数据库
    ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-export-websoft9.png)
 3. 将程序文件和数据库文件放到同一个文件夹，根据日期命名
 4. 备份工作完成

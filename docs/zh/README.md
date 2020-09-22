@@ -6,9 +6,9 @@ home: false
 
 本文档由 [Websoft9](https://www.websoft9.com/) 公司提供，用于指导用户学习 ONLYOFFICE 的安装部署与基本运维技术，包括：ONLYOFFICE部署、初始化安装、环境配置、HTTPS、SMTP、备份升级和连接云服务器操作等基本操作。
 
-[ONLYOFFICE](https://www.onlyoffice.com) 流行的开源消息队列系统，用erlang语言开，是AMQP（高级消息队列协议）的标准实现。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。
+[ONLYOFFICE](https://onlyoffice.com) 是一款集成了文档、电子邮件、事件、任务和客户关系管理工具的开源在线办公套件。其文档管理功能实现了文档的在线编辑、在线预览和协同管理，可用于替代Office365或Google docs。另外，它还提供了CRM、项目管理等功能，非常合适作为企业内部的全员协作Office系统。
 
-![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/onlyoffice/onlyoffice-gui-websoft9.png)
+![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/onlyoffice/onlyoffice-websoft9-001.png)
 
 ---
 

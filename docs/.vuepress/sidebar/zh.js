@@ -18,7 +18,6 @@ module.exports = [
     children: [
       '/zh/solution-smtp',
       '/zh/solution-https',
-      '/zh/solution-cli',
       '/zh/solution-backup',
       '/zh/solution-upgrade',
       '/zh/solution-more',
@@ -31,7 +30,7 @@ module.exports = [
     children: [
       '/zh/admin-services',
       '/zh/admin-mysql',
-      ['https://support.websoft9.com/docs/linux/zh/lang-erlang.html','Erlang'],
+      ['https://support.websoft9.com/docs/docker/zh','Docker'],
       ['https://support.websoft9.com/docs/linux/zh/admin-practices.html','Linux'],
     ]
   },

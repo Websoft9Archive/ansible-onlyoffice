@@ -8,7 +8,7 @@
 
 日志文件路径为：`/data/logs`。检索关键词 **Failed** 或者 **error** 查看错误
 
-#### ONLYOFFICE服务无法启动？
+#### ONLYOFFICE 服务无法启动？
 
 服务无法启动最常见的问题包括：磁盘空间不足，内存不足，配置文件错误。  
 建议先通过命令进行排查  
@@ -20,14 +20,35 @@ df -lh
 # 查看内存使用
 free -lh
 
-# 查看服务状态和日志
-systemctl status onlyoffice
-journalctl -u onlyoffice
+# 查看服务
+sudo docker inspect onlyofficecommunityserver
+sudo docker logs onlyofficecommunityserver
 ```
 
-#### 在Chrome下修改密码后报错？
+#### 修改 MySLQ 数据库密码之后 ONLYOFFICE 无法启动？
 
-这个并不是服务器端的问题，只要更新浏览器即可。
+修改密码之后需要需改 ONLYOFFICE docker-compose 文件中对应的数据库密码： */data/wwwroot/onlyoffice/docker-compose.yml*，然后运行如下命令：
 
-![chrome error of ONLYOFFICE](https://libs.websoft9.com/Websoft9/DocsPicture/zh/onlyoffice/onlyoffice-chromeerror-websoft9.png)
+```
+cd /data/wwwroot/onlyoffice
+docker-compose up -d
+```
 
+#### ONLYOFFICE 显示502错误？
+
+首先通过命令 `sudo docker logs onlyofficecommunityserver`，查看是否有错误日志。  
+
+一般是由文件权限不足或数据连接问题导致。
+
+#### 重新安装了数据库导致 ONLYOFFICE 无法运行？
+
+ONLYOFFICE 对数据库的配置有严格的要求，保证符合如下要求：
+
+```
+echo "[mysqld]
+sql_mode = 'NO_ENGINE_SUBSTITUTION'
+max_connections = 1000
+max_allowed_packet = 1048576000
+group_concat_max_len = 2048
+log-error = /var/log/mysql/error.log" > /app/onlyoffice/mysql/conf.d/onlyoffice.cnf
+```

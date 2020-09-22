@@ -2,16 +2,40 @@
 
 使用由Websoft9提供的 ONLYOFFICE 部署方案，可能需要用到的服务如下：
 
-### ONLYOFFICE
+### ONLYOFFICE Community Server on Docker
 
 ```shell
-sudo systemctl start onlyoffice-server
-sudo systemctl stop onlyoffice-server
-sudo systemctl restart onlyoffice-server
-sudo systemctl status onlyoffice-server
+sudo docker inspect onlyofficecommunityserver
+sudo docker start onlyofficecommunityserver
+sudo docker restart onlyofficecommunityserver
+sudo docker stop onlyofficecommunityserver
+sudo docker rm onlyofficecommunityserver
 
-# you can use this debug mode if ONLYOFFICE service can't run
-onlyoffice-server console
+# 进入容器运行命令
+sudo docker exec -it onlyofficecommunityserver /bin/bash
+```
+
+
+### ONLYOFFICE Document Server on Docker
+
+```shell
+sudo docker inspect onlyofficedocumentserver
+sudo docker start onlyofficedocumentserver
+sudo docker restart onlyofficedocumentserver
+sudo docker stop onlyofficedocumentserver
+sudo docker rm onlyofficedocumentserver
+
+# 进入容器运行命令
+sudo docker exec -it onlyofficedocumentserver /bin/bash
+```
+
+### phpMyAdmin on Docker
+```shell
+sudo docker inspect phpmyadmin
+sudo docker start phpmyadmin
+sudo docker restart phpmyadmin
+sudo docker stop phpmyadmin
+sudo docker rm phpmyadmin
 ```
 
 ### MySQL
@@ -23,11 +47,20 @@ sudo systemctl restart mysql
 sudo systemctl status mysql
 ```
 
-### Redis
+### Nginx
 
 ```shell
-systemctl start redis
-systemctl stop redis
-systemctl restart redis
-systemctl status redis
+sudo systemctl start mysql
+sudo systemctl stop mysql
+sudo systemctl restart mysql
+sudo systemctl status mysql
+```
+
+
+### Docker
+```shell
+sudo systemctl start docker
+sudo systemctl stop docker
+sudo systemctl restart docker
+sudo systemctl status docker
 ```

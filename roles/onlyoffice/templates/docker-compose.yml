@@ -3,11 +3,12 @@
 # ONLYOFFICE COMMUNITY EDITION= community server + document server + mail server
 # This playbook have not mail server
 # The environment item's value should not include "", otherwise mysql can't connected
+# DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyofficedocumentserver is for integration
 
 version: '2'
 services:
   onlyoffice-communityserver:
-    container_name: onlyoffice
+    container_name: onlyofficecommunityserver
     image: onlyoffice/communityserver:latest
     environment:
       - MYSQL_SERVER_HOST={{docker_gateway.stdout}}
@@ -15,7 +16,8 @@ services:
       - MYSQL_SERVER_DB_NAME={{onlyoffice_db_database}}
       - MYSQL_SERVER_USER={{onlyoffice_db_user}}
       - MYSQL_SERVER_PASS={{onlyoffice_db_password}
-      - DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-documentserver
+      - MYSQL_SERVER_ROOT_PASSWORD={{onlyoffice_db_password}
+      - DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyofficedocumentserver
     stdin_open: true
     restart: always
     volumes:
