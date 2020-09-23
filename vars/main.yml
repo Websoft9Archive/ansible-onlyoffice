@@ -38,6 +38,7 @@ init_db:
     admin: root
     users: ["onlyoffice"]
     password: "123456"
+    service_after: docker.service
     config_paths:
       - /data/wwwroot/onlyoffice/docker-compose.yml
     commands: 
