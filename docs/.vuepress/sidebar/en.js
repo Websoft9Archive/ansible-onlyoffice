@@ -19,6 +19,7 @@ module.exports = [
           '/solution-https',
           '/solution-backup',
           '/solution-upgrade',
+          '/solution-documentserver',
           '/solution-more',
         ]
       },

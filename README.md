@@ -26,7 +26,7 @@ Additional requirements at least 6 GB of swap
 
 ## 组件
 
-包含的核心组件为：OnyOffice Community Edition | OnyOffice Document Server 可选
+包含的核心组件为：OnyOffice Community Edition | OnyOffice Document Server 可选安装
 
 更多请见[参数表](/docs/zh/stack-components.md)
 

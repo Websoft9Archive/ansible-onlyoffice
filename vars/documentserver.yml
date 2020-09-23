@@ -1,0 +1,7 @@
+# This vars is only for ONLYOFFICE Document Server which will cover the follow vars for ONLYOFFICE
+
+docker_applications: 
+  - onlyofficedocumentserver
+
+nginx_appname: "onlyofficedocumentserver"
+nginx_reverse_proxy_port: "9002"
