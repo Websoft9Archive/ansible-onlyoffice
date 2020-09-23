@@ -8,9 +8,7 @@ Here are the required username and password for ONLYOFFICE image installation an
 
 ## ONLYOFFICE
 
-* ONLYOFFICE administrator username: `admin`
-* ONLYOFFICE administrator password: Get it form the file of your server */credentials/password.txt*
-  > If there no password.txt exist, the administrator password is `admin`
+初始化安装之时自行设置
 
 ## MySQL
 

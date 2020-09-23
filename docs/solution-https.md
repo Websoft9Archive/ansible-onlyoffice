@@ -4,7 +4,7 @@ Before setting, you have to complete [binding domain](/solution-more.md) and mak
 
 ONLYOFFICE deployment package has installed the SSL module of Nginx and open Certificate Authority **[Let's Encrypt](https://letsencrypt.org/)** for you to configure the HTTPS quickly and conveniently.
 
-> Except for the vhost configuration file, it doesn't need any other modifications to Nginx file for HTTPS settings.
+> Except for the [vhost configuration file](/stack-components.md#nginx), it doesn't need modify any Nginx configuration file for HTTPS.
 
 ## Quick start
 

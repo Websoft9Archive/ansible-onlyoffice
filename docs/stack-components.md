@@ -6,8 +6,19 @@ The ONLYOFFICE deployment package contains a sequence of software (referred to a
 
 ### ONLYOFFICE
 
-ONLYOFFICE installation directory:  */data/onlyoffice*  
-ONLYOFFICE logs directory:  */data/logs/onlyoffice*  
+本项目中的 ONLYOFFICE 是由：ONLYOFFICE Community Server 和 ONLYOFFICE Document Server 组成，它们均基于 Docker 安装，并完成了集成。
+
+#### ONLYOFFICE Community Server
+
+ONLYOFFICE Community Server存储目录： */data/wwwroot/communityserver*  
+ONLYOFFICE docker-compose 文件路径： */data/wwwroot/onlyoffice/docker-compose.yml*  
+ONLYOFFICE 日志目录： */data/wwwroot/onlyoffice/communityserver/logs*
+
+#### ONLYOFFICE Document Server
+
+ONLYOFFICE Document Server存储目录： */data/apps/onlyofficedocumentserver*  
+ONLYOFFICE docker-compose 文件路径： */data/apps/onlyofficedocumentserver/docker-compose.yml*  
+ONLYOFFICE 日志目录： */data/apps/onlyofficedocumentserver/logs*
 
 ### Nginx
 
@@ -20,21 +31,33 @@ Nginx rewrite rules directory: */etc/nginx/conf.d/rewrite*
 
 MySQL installation directory: */usr/local/mysql*  
 MySQL data directory: */data/mysql*  
-MySQL configuration file: */etc/my.cnf*    
-MySQL Web Management URL: *http://Internet IP/9panel*, get credential from [Username and Password](/stack-accounts.md)
+MySQL configuration file: */etc/my.cnf*  
+
+MySQL 可视化管理参考 [MySQL 管理](/zh/admin-mysql.md) 章节。
+
+###  phpMyAdmin
+
+phpMyAdmin 是一款可视化 MySQL 管理工具，在本项目中它基于 Docker 安装。  
+
+phpMyAdmin directory：*/data/apps/phpmyadmin*  
+phpMyAdmin docker compose file：*/data/apps/phpmyadmin/docker-compose.yml*  
 
 ## Ports
 
-Open or close ports by **[Security Group Setting](https://support.websoft9.com/docs/faq/zh/tech-instance.html)** of your Cloud Server to decide whether the port can be accessed from Internet.
+Open or close ports by **[Security Group Setting](https://support.websoft9.com/docs/faq/tech-instance.html)** of your Cloud Server to decide whether the port can be accessed from Internet.  
+
 You can run the cmd `netstat -tunlp` to check all related ports.  
-The following are the ports you may use.
+
+The following are the ports you may use:
 
 | Name | Number | Use |  Necessity |
 | --- | --- | --- | --- |
-| HTTP | 8161 | HTTP requests for ONLYOFFICE Console| Required |
-| HTTPS | 5672 | epmd | Optional |
-| TCP | 55672 | Erlang distribution | Optional |
-
+| TCP | 80 | HTTP to access ONLYOFFICE | Required |
+| TCP | 443 | HTTPS to access ONLYOFFICE | Optional |
+| TCP | 3306 | Remote to access MySQL | Optional |
+| TCP | 9003 | Use port to access ONLYOFFICE | Optional |
+| TCP | 9002 | ONLYOFFICE Document Server on Docker | Optional |
+| TCP | 9090 | phpMyAdmin on Docker | Optional |
 
 ## Version
 
@@ -50,16 +73,18 @@ lsb_release -a
 # Nginx  Version
 nginx -V
 
-# Java version
-java -v
-
 # Docker Version
 docker -v
 
-# erlang  Version
-yum info erlang
-apt show erlang
-
 # ONLYOFFICE version
 onlyofficectl status | grep ONLYOFFICE*
+
+# Dokcer version
+docker --version
+
+# MySQL version
+mysql -V
+
+# ONLYOFFICE Community Server version
+docker image inspect onlyoffice/communityserver  | grep onlyoffice.community.version | sed -n 1p
 ```

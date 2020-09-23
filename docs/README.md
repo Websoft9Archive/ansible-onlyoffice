@@ -6,9 +6,9 @@ home: false
 
 This documentation is provided by [Websoft9](https://www.websoft9.com/). It can help users to acquire skills of ONLYOFFICE Deployment, Installation, Configuration, HTTPS, SMTP, Backup, Upgrade, Connect Instance and more.
 
-[ONLYOFFICE](https://onlyoffice-server.apache.org/) is the most widely deployed open source message broker. With more than 35,000 production deployments of ONLYOFFICE world-wide at small startups and large enterprises, ONLYOFFICE is the most popular open source message broker.
+[ONLYOFFICE](https://onlyoffice.com) is a free open source collaborative system developed to manage documents, projects, customer relationship and email correspondence, all in one place. It includes Community Server, Document Server and Mail Server three major cores.
 
-![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/onlyoffice/onlyoffice-gui-websoft9.png)
+![ONLYOFFICE Console Websoft9](http://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-websoft9-001.png)
 
 ---
 
