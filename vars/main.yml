@@ -44,4 +44,5 @@ init_db:
     commands: 
       - sudo cd /data/wwwroot/onlyoffice
       - sudo docker-compose down -v
+      - sudo rm -rf communityserver
       - sudo docker-compose up -d
