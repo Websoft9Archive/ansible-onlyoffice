@@ -1,19 +1,33 @@
 # FAQ
 
-#### How can I enable the debug mode of ONLYOFFICE service?
+#### ONLYOFFICE 是否支持中文？
 
-```
-systemctl stop onlyoffice-server
-onlyoffice-server console
-```
+支持，可以在线切换多种语言
 
-#### Can I reset password of ONLYOFFICE by command?
+#### Community Edition vs Enterprise Edition？
 
-Yes, e.g `onlyofficectl change_password  admin newpassword`
+参考官方说明 [Compare Community Edition and Enterprise Edition](https://github.com/ONLYOFFICE/CommunityServer#compare-community-edition-and-enterprise-edition)
+
+#### 能否介绍 ONLYOFFICE 各种版本的关系？
+
+OnlyOffice的产品家族比较复杂，根据官方的介绍，可以分为：
+
+* ENTERPRISE EDITION：企业版
+* COMMUNITY EDITION：开源版
+* INTEGRATION EDITION：比如集成了 ownCloud 的版本
+* DEVELOPER EDITION：开发者版本
+
+其中每一个版本都是由：Community Server, Document Server, Mail Server 组成。  
+
+COMMUNITY EDITION 是一个完全免费的版本。DEVELOPER EDITION 是适用于开发者的[收费版本](https://www.onlyoffice.com/zh/developer-edition-prices.aspx)。
+
+#### 数据库密码可以修改吗？
+
+可以，但是修改后需要同步修改 ONLYOFFICE docker-compose 文件，然后通过 docker-compose 重新运行容器。
 
 #### If there is no domain name, can I deploy ONLYOFFICE?
 
-Yes, access ONLYOFFICE by *http://Internet IP:8161*.
+Yes, access ONLYOFFICE by *http://Cloud Server Internet IP*.
 
 #### What is the password for the database root user?
 
@@ -23,18 +37,14 @@ The password is stored in the server related file `/credentials/password.txt`.
 
 Yes, phpMyAdmin is included. Visit by *http://Internet IP:9090*.
 
-#### Is it possible to modify the source path of ONLYOFFICE?
-
-No.
-
 #### How to change the permissions of filesystem?
 
 Change owner(group) or permissions as below:
 
 ```shell
-chown -R apache.apache /data/wwwroot
-find /data/wwwroot -type d -exec chmod 750 {} \;
-find /data/wwwroot -type f -exec chmod 640 {} \;
+chown -R onlyoffice.onlyoffice /data/wwwroot/onlyoffice
+find /data/wwwroot/onlyoffice -type d -exec chmod 750 {} \;
+find /data/wwwroot/onlyoffice -type f -exec chmod 640 {} \;
 ```
 
 #### What's the difference between Deployment and Installation?

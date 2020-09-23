@@ -15,19 +15,42 @@ Insufficient disk space and memory, incorrect configuration file may cause the f
 It is recommended to first check through the command.
 
 ```shell
-# restart ONLYOFFICE service
-systemctl status onlyoffice
-journalctl -u onlyoffice
-
-# view disk space
+# check disk
 df -lh
 
-# view memory rate
+# check memory
 free -lh
+
+# check docker container onlyofficecommunityserver
+sudo docker inspect onlyofficecommunityserver
+sudo docker logs onlyofficecommunityserver
 ```
 
-#### Error in Chrome when modify password?
+#### 修改 MySLQ 数据库密码之后 ONLYOFFICE 无法启动？
 
-This error has nothing to do with ONLYOFFICE server. Just upgrade you local Chrome to solve it.
+修改密码之后需要需改 ONLYOFFICE docker-compose 文件中对应的数据库密码： */data/wwwroot/onlyoffice/docker-compose.yml*，然后运行如下命令：
 
-![chrome error of ONLYOFFICE](https://libs.websoft9.com/Websoft9/DocsPicture/zh/onlyoffice/onlyoffice-chromeerror-websoft9.png)
+```
+cd /data/wwwroot/onlyoffice
+docker-compose down -v
+docker-compose up -d
+```
+
+#### ONLYOFFICE 显示502错误？
+
+首先通过命令 `sudo docker logs onlyofficecommunityserver`，查看是否有错误日志。  
+
+一般是由文件权限不足或数据连接问题导致。
+
+#### 重新安装了数据库导致 ONLYOFFICE 无法运行？
+
+ONLYOFFICE 对数据库的配置有严格的要求，保证符合如下要求：
+
+```
+echo "[mysqld]
+sql_mode = 'NO_ENGINE_SUBSTITUTION'
+max_connections = 1000
+max_allowed_packet = 1048576000
+group_concat_max_len = 2048
+log-error = /var/log/mysql/error.log" > /app/onlyoffice/mysql/conf.d/onlyoffice.cnf
+```

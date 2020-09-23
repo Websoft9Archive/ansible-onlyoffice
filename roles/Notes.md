@@ -28,4 +28,6 @@ group_concat_max_len = 2048
 log-error = /var/log/mysql/error.log" > /app/onlyoffice/mysql/conf.d/onlyoffice.cnf
 ```
 
-2. 
+2. 其他问题
+
+如果 ONLYOFFICE 无法访问，查看其 Docker 日志一定有 error

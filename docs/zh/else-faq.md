@@ -49,7 +49,7 @@ COMMUNITY EDITION 是一个完全免费的版本。DEVELOPER EDITION 是适用�
 
 ```shell
 # 拥有者
-chown -R apache.apache /data/wwwroot/onlyoffice
+chown -R onlyoffice.onlyoffice /data/wwwroot/onlyoffice
 # 读写执行权限
 find /data/wwwroot/onlyoffice -type d -exec chmod 750 {} \;
 find /data/wwwroot/onlyoffice -type f -exec chmod 640 {} \;

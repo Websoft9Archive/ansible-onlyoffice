@@ -20,7 +20,7 @@ df -lh
 # 查看内存使用
 free -lh
 
-# 查看服务
+# 查看容器服务
 sudo docker inspect onlyofficecommunityserver
 sudo docker logs onlyofficecommunityserver
 ```
@@ -31,6 +31,7 @@ sudo docker logs onlyofficecommunityserver
 
 ```
 cd /data/wwwroot/onlyoffice
+docker-compose down -v
 docker-compose up -d
 ```
 
