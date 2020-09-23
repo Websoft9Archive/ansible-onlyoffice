@@ -43,4 +43,3 @@ init_db:
       - /data/wwwroot/onlyoffice/docker-compose.yml
     commands: 
       - sudo docker-compose up -d -f /data/wwwroot/onlyoffice/docker-compose.yml
-      - sudo docker restart onlyofficecommunityserver
