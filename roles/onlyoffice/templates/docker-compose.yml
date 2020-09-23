@@ -16,7 +16,7 @@ services:
       - MYSQL_SERVER_DB_NAME={{onlyoffice_db_database}}
       - MYSQL_SERVER_USER={{onlyoffice_db_user}}
       - MYSQL_SERVER_PASS={{onlyoffice_db_password}
-      - MYSQL_SERVER_ROOT_PASSWORD={{onlyoffice_db_password}
+      - MYSQL_SERVER_ROOT_PASSWORD={{onlyoffice_db_password}}
       - DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyofficedocumentserver
     stdin_open: true
     restart: always
