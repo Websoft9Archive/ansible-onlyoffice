@@ -31,33 +31,33 @@ Log in ONLYOFFICE console, open 【Settings】>【Common】>【Customization】,
 
 The ONLYOFFICE deployment solution provided by Websoft9 contains ONLYOFFICE Document Server by default, and the settings are completed. You can edit and preview online without any settings.
 
-下面展现文档预览与编辑的设置原理，仅供后续个性化修改参考：
+Steps for setting preview and editing are as follows, acting as reference for you to have personalized modifications.
 
-* 登录到 ONLYOFFICE ，依次打开：【设置】>【集成】>【文件服务】，你可以看到预配置：
-  ![ONLYOFFICE 文件服务](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-preview-websoft9.png)
+* Log in ONLYOFFICE, open:【Settings】>【Integration】>【Document Service】and you can see the settings.
+  ![ONLYOFFICE document service](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-preview-websoft9.png)
 
-* 本地浏览器访问：*http://服务器公网IP:9002*，会看到 OnlyOffice Document Server 正在运行的提示 
+* Use local browser to access：*http://Internet IP:9002*, and get the notice that OnlyOffice Document Server is running.
    ![ONLYOFFICE document is running ](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-dkisrunning-websoft9.png)
 
-> 请勿修改默认的文档配置，除非你打算采用其他文档服务替换它
+> Please don't modify the default settings unless you want to replace it with other document service.
 
-## 重置密码
+## Reset password
 
-常用的 ONLYOFFICE 重置密码相关的操作主要有修改密码和找回密码两种类型：
+There are two common measures to reset password for ONLYOFFICE: change password and forgot password. 
 
-### 修改密码
+### Change password
 
-1. 登录 ONLYOFFICE 后台，依次打开：【Administrator】>【个人资料】，先完成**电子邮件验证**
-  ![ONLYOFFICE 修改密码](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-modifypw001-websoft9.png)
+1. Log in ONLYOFFICE console, open:【Administrator】>【Profile】and complete **email validation**.
+  ![ONLYOFFICE change password](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-modifypw001-websoft9.png)
 
-2. 重新回到个人资料页面，点击【Administrator】下的到下角，就会看到修改密码入口
-  ![ONLYOFFICE 修改密码](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-modifypw002-websoft9.png)
+2. Return to the profile page, click the arrow next to【Administrator】, then click 【Change password】.
+  ![ONLYOFFICE change password](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-modifypw002-websoft9.png)
 
-### 找回密码
+### Forgot password
 
-如果用户忘记了密码，建议通过邮件的方式找回密码：
+Try to retrieve your password through email when forgot it.
 
-1. 完成 [SMTP 设置](/en/solution-smtp.md)
+1. Complete [SMTP settings](/en/solution-smtp.md)
 
-2. 打开 ONLYOFFICE 登录页面，点击【Forgot】开始通过邮件找回密码
-  ![ONLYOFFICE 找回密码](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-forgetpw-websoft9.png)
+2. Open ONLYOFFICE login page, click【Forgot】to retrieve the password by email.
+  ![ONLYOFFICE forgot password](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-forgetpw-websoft9.png)
