@@ -2,16 +2,16 @@
 
 Each of the following solutions has been proved to be effective and we hope it can give you help.
 
-## Binding Domain
+## Domain Binding
 
-The precondition for binding a domain is that ONLYOFFICE can accessed by domain name.
+The precondition for **Domain binding** is the **Domain resolution** for ONLYOFFICE has been completed.
 
-When there is only one website on the server, you can visit the website without binding domain. While considering the server security and subsequent maintenance, **Binding Domain** is necessary.
+Considering the server security and subsequent maintenance, the **Domain Binding** step is necessary.
 
-Steps for binding ONLYOFFICE domain are as follows:
+Steps for ONLYOFFICE domain binding are as follows:
 
-1. Connect your Cloud Server;
-2. Modify [Nginx vhost configuration file](/stack-components.md#nginx),and change the **server_name**'s value to your domain name.
+1. Connect your Cloud Server by SFTP tool.
+2. Modify [Nginx vhost configuration file](/stack-components.md#nginx),and change the **server_name**'s item to your domain name.
    ```text
    server
    {
@@ -20,16 +20,16 @@ Steps for binding ONLYOFFICE domain are as follows:
    ...
    }
    ```
-## ONLYOFFICE 设置语言
+## ONLYOFFICE Language Setting
 
-登录 ONLYOFFICE，在后台 【设置】>【通用】>【自定义】中设置语言
+Log in ONLYOFFICE console, open 【Settings】>【Common】>【Customization】, set Language and time zone.
 
-![ONLYOFFICE 设置语言](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-lanuageset-websoft9.png)
+![ONLYOFFICE Language](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-lanuageset-websoft9.png)
 
 
-## ONLYOFFICE 文件预览与编辑
+## ONLYOFFICE Document Preview and Editing
 
-由 Websoft9 提供的 ONLYOFFICE 部署方案默认包含 ONLYOFFICE Document Server，并已完成设置，无需任何设置即可在线编辑和预览文档。
+The ONLYOFFICE deployment solution provided by Websoft9 contains ONLYOFFICE Document Server by default, and the settings are completed. You can edit and preview online without any settings.
 
 下面展现文档预览与编辑的设置原理，仅供后续个性化修改参考：
 

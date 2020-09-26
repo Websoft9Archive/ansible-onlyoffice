@@ -1,35 +1,33 @@
 # Document Server
 
-本章适合使用了 Websoft9 提供的 ONLYOFFICE Document Server 部署方案（区别于 ONLYOFFICE）。
+This section is offered for users who use the ONLYOFFICE Cmommunity Server deployment solution. (Different from ONLYOFFICE)
 
-## 组件
+## Components
 
-包含：Nginx, ONLYOFFICE Document Server on Docker, Docker等三个组件。  
+Include：Nginx, ONLYOFFICE Document Server on Docker, Docker
 
-Nginx 用于接受用户访问请求，然后转发给 ONLYOFFICE Document Server on Docker。  
+Nginx is used to accept user access requests and forward them to the ONLYOFFICE Document Server on Docker.
 
-组件的详细信息参考[*参数*](zh/stack-components.md)章节。
+More details about components, refer to this section [*Components*](/stack-components.md).
 
-## 访问
+## Access
 
-本地浏览器访问：*http://服务器公网IP* 和 *http://服务器公网IP:9002* 均可看到 OnlyOffice Document Server 正在运行的提示。  
+Use local browser to access *http://Internet IP* and *http://Internet IP:9002* and see the notice that ONLYOFFICE Document Server is running.
 ![ONLYOFFICE Document Server is running](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-dkisrunning-websoft9.png)
 
-## 域名绑定和 HTTPS 设置
+## Domain binding and HTTPS Settings
 
-由于已经安装了 Nginx 作为 ONLYOFFICE Document Server on Docker 的转发服务，因此域名绑定和 HTTPS 完全只需要对 Nginx 进行设置。  
+Since Nginx has been installed as the forwarding service of ONLYOFFICE Document Server on Docker, you only need to set Nginx for domain binding and HTTPS settings. Without modifying Docker, this work becomes simply.
 
-无需修改 ONLYOFFICE Document Server on Docker 容器，使得这项工作大大被简化。
+For detailed settings, Refer to:
 
-设置详情参考如下：
+* [Domain Binding](/solution-more.md#domainbinding)
+* [HTTPS Settings](/solution-https.md)
 
-* [域名绑定](/zh/solution-more.md#域名绑定)
-* [HTTPS设置](/zh/solution-https.md)
+## Integrate
 
-## 集成
+ONLYOFFICE Document Server supports preview and integration by ownCloud, Nextcloud, Seafile and other Enterprise File Sync and Share.
 
-ONLYOFFICE Document Server 支持被 ownCloud, Nextcloud, Seafile 等网盘软件的文档预览与集成。
-
-* [ownCloud 集成 ONLYOFFICE Document Server](http://support.websoft9.com/docs/owncloud/zh/solution-more.html#owncloud-文件预览与编辑)
-* [Nextcloud 集成 ONLYOFFICE Document Server](http://support.websoft9.com/docs/nextcloud/zh/solution-more.html#nextcloud-文件预览与编辑)
-* [Seafile 集成 ONLYOFFICE Document Server](https://support.websoft9.com/docs/seafile/zh/solution-office.html)
+* [ownCloud integrate ONLYOFFICE Document Server](http://support.websoft9.com/docs/owncloud/solution-more.html#owncloud-preview-and-edit)
+* [Nextcloud integrate ONLYOFFICE Document Server](http://support.websoft9.com/docs/nextcloud/solution-more.html#nextcloud-preview-and-edit)
+* [Seafile integrate ONLYOFFICE Document Server](https://support.websoft9.com/docs/seafile/solution-office.html)

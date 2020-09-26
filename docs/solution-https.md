@@ -2,9 +2,9 @@
 
 Before setting, you have to complete [binding domain](/solution-more.md) and make sure you can access ONLYOFFICE by HTTP.
 
-ONLYOFFICE deployment package has installed the SSL module of Nginx and open Certificate Authority **[Let's Encrypt](https://letsencrypt.org/)** for you to configure the HTTPS quickly and conveniently.
+ONLYOFFICE deployment package has installed the SSL module of Nginx and open Certificate Authority **[Let's Encrypt](https://letsencrypt.org/)** for you to configure the HTTPS quickly.
 
-> Except for the [vhost configuration file](/stack-components.md#nginx), it doesn't need modify any Nginx configuration file for HTTPS.
+> Except for the [vhost configuration file](/stack-components.md#nginx), HTTPS settings do not need to modify any other files of Nginx.
 
 ## Quick start
 
@@ -22,7 +22,7 @@ If you have applied for a commercial certificate, complete the HTTPS configurati
 
 1. Upload your certificate, file of the certificate chain and secret key to the directory: */data/cert*.
 
-2. Open the vhost configuration file: */etc/nginx/conf.d/default.conf*.
+2. Edit the vhost configuration file: */etc/nginx/conf.d/default.conf*.
 
 3. Insert the **HTTPS template** into *server{  }* and modify your certificate path.
    ``` text
@@ -37,7 +37,7 @@ If you have applied for a commercial certificate, complete the HTTPS configurati
    ssl_prefer_server_ciphers on;
    #-----HTTPS template end------------
    ```
-4. save file and [restart Nginx service](/admin-services.md).
+4. Save it and [restart Nginx service](/admin-services.md).
 
 ## Special Guide
 

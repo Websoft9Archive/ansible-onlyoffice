@@ -12,31 +12,29 @@ Users with experience in Cloud Server operation and maintenance understand the n
 2. Is it possible to recover the website after it was attacked by hackers?
 3. The content of the website has been changed into a mess. Could it be recovered?
 
-When a failure occurs, we may first turn to a professional for help, but unfortunately, some failure cannot be solved as quickly as we expected, and even it's insoluble.
+When this failure occurs, we may first turn to a professional for help, but unfortunately, some failure cannot be solved as quickly as we expected, and even it's insoluble.
 
-Obviously, a backup is necessary when comes to a failure. The existing backup file helps to repair the failed system, which means the irrecoverable loss can be avoided.
+Obviously, a backup is necessary when comes to a failure. The existing backup file helps to repair the failed system, which means the huge loss due to irrecoverability can be avoided.
 
-> Remember to develop the habit of backup. It's a great and useful way to help solve failure.
+> Remember to develop the habit of backup. It's a great and useful way to help repair and recovery.
 
 ## How
 
-There are four objects on the server for us to back up, including **operating system, environment software, database and application**. Each object may have unpredictable failures that cannot be solved as expected.
-
-We suggest to take the following two necessary backup measures:
+As there are four objects on the server to back up, including **operating system, environment software, database and application**. and each object may have unpredictable failures that cannot be solved as expected, we suggest to take the following two necessary backup measures:
 
 ### Automation Backups for Instance
 
-To make automation backups for Instance is to use the **Snapshot** or **Cloud Server Backup Service** on your Cloud Platform. A snapshot is a full, read-only copy of a disk, which records the data of the disk. You can take a snapshot of an OS or data disk as a backup, and use it to have a key recovery.
+Automation backup for Instance is completed based on **Snapshot** or **Cloud Server Backup Service** on your Cloud Platform. A snapshot is a full, read-only copy of a disk, which backs up the data of a disk at a certain point in time and can have a key recovery. You can take a snapshot of an OS or data disk to use as a backup, or to troubleshoot instance issues.
 
 View the following list to understand this kind of backup.
 
 ```
-- Backup scope: all data on a disk including operating system, software environment, database and applications
-- Backup effect: very Good
-- Backup frequency: automatic backup per hour/day/week as you need
-- Recovery method: one key recovery on Cloud platform
-- Skill requirement: very easy 
-- Automation or Manual: fully automated backup after setting strategy
+- Backup scope: All data on a disk including operating system, software environment, database and applications
+- Backup effect: Very Good
+- Backup frequency: Automatic backup per hour/day/week as you need
+- Recovery method: One key recovery on Cloud platform
+- Skill requirement: Very easy 
+- Automation or Manual: Fully automated backup after setting strategy
 ```
 
 Different Cloud Platforms' snapshot settings slightly differ. Refer to [Cloud platform backup solution](https://support.websoft9.com/docs/faq/tech-instance.html).
@@ -53,9 +51,9 @@ Different Cloud Platforms' snapshot settings slightly differ. Refer to [Cloud pl
 - Backup frequency: You can operate when you need
 - Recovery method: Import
 - Skill requirement: Easy 
-- Automation: manual
+- Automation: Manual
 ```
-The general steps to make a manual backup are as follows:
+The general steps for manual backup are as follows:
 
 1. Compress and download the entire directory */data/wwwroot/onlyoffice* by SFTP.
 

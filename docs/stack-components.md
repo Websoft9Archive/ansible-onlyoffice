@@ -1,24 +1,24 @@
 # Parameters
 
-The ONLYOFFICE deployment package contains a sequence of software (referred to as "components") required for ONLYOFFICE to run. Below list the important information, the component name, installation directory path, configuration file path, port, version, etc.
+The ONLYOFFICE deployment package contains a sequence of software (referred to as "components") required for ONLYOFFICE to run. Below list the important information, such as the component name, installation directory path, configuration file path, port, version, etc.
 
 ## Path
 
 ### ONLYOFFICE
 
-本项目中的 ONLYOFFICE 是由：ONLYOFFICE Community Server 和 ONLYOFFICE Document Server 组成，它们均基于 Docker 安装，并完成了集成。
+ONLYOFFICE in this project consists of ONLYOFFICE Community Server and ONLYOFFICE Document Server. Both are installed on Docker, and complete integration.
 
 #### ONLYOFFICE Community Server
 
-ONLYOFFICE Community Server存储目录： */data/wwwroot/communityserver*  
-ONLYOFFICE docker-compose 文件路径： */data/wwwroot/onlyoffice/docker-compose.yml*  
-ONLYOFFICE 日志目录： */data/wwwroot/onlyoffice/communityserver/logs*
+ONLYOFFICE Community Server storage directory: */data/wwwroot/communityserver*  
+ONLYOFFICE docker-compose document directory: */data/wwwroot/onlyoffice/docker-compose.yml*  
+ONLYOFFICE logs directory： */data/wwwroot/onlyoffice/communityserver/logs*
 
 #### ONLYOFFICE Document Server
 
-ONLYOFFICE Document Server存储目录： */data/apps/onlyofficedocumentserver*  
-ONLYOFFICE docker-compose 文件路径： */data/apps/onlyofficedocumentserver/docker-compose.yml*  
-ONLYOFFICE 日志目录： */data/apps/onlyofficedocumentserver/logs*
+ONLYOFFICE Document Server storage directory: */data/apps/onlyofficedocumentserver*  
+ONLYOFFICE docker-compose docuemnt directory: */data/apps/onlyofficedocumentserver/docker-compose.yml*  
+ONLYOFFICE logs directory: */data/apps/onlyofficedocumentserver/logs*
 
 ### Nginx
 
@@ -33,11 +33,11 @@ MySQL installation directory: */usr/local/mysql*
 MySQL data directory: */data/mysql*  
 MySQL configuration file: */etc/my.cnf*  
 
-MySQL 可视化管理参考 [MySQL 管理](/zh/admin-mysql.md) 章节。
+Web-GUI tool phpMyAdmin for MySQL, refer to the section:[MySQL Management](/admin-mysql.md). 
 
 ###  phpMyAdmin
 
-phpMyAdmin 是一款可视化 MySQL 管理工具，在本项目中它基于 Docker 安装。  
+phpMyAdmin is a Web-GUI tool for MySQL management, and it's installed on Docker in this project.
 
 phpMyAdmin directory：*/data/apps/phpmyadmin*  
 phpMyAdmin docker compose file：*/data/apps/phpmyadmin/docker-compose.yml*  
@@ -48,20 +48,20 @@ Open or close ports by **[Security Group Setting](https://support.websoft9.com/d
 
 You can run the cmd `netstat -tunlp` to check all related ports.  
 
-The following are the ports you may use:
+Follows are the ports you may use:
 
 | Name | Number | Use |  Necessity |
 | --- | --- | --- | --- |
 | TCP | 80 | HTTP to access ONLYOFFICE | Required |
 | TCP | 443 | HTTPS to access ONLYOFFICE | Optional |
-| TCP | 3306 | Remote to access MySQL | Optional |
+| TCP | 3306 | Remote access to MySQL | Optional |
 | TCP | 9003 | Use port to access ONLYOFFICE | Optional |
 | TCP | 9002 | ONLYOFFICE Document Server on Docker | Optional |
 | TCP | 9090 | phpMyAdmin on Docker | Optional |
 
 ## Version
 
-You can see the version on product pages at Marketplace. However, after being deployed to your server, the components will be updated automatically, resulting in a certain change in the version number. Therefore, run the command on the server to view the exact version number. 
+You can see the version on product pages of Marketplace. However, after being deployed to your server, the components will be updated automatically, resulting in a certain change in the version number. Therefore, run the command on the server to view the exact version number. 
 
 ```shell
 # Check all components version

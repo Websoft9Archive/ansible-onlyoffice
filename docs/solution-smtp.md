@@ -1,6 +1,6 @@
 # SMTP
 
-Sending mail is a common feature for ONLYOFFICE. With a large number of users' practice and feedback, only one way is recommended, that is, using the **third-party SMTP service** to send the email.
+With lots of users' practice and feedback, the most recommended way is using the **third-party SMTP service** to send the email.
 
 > Do not try to install **Sendmail** or other Mail server software on your Cloud Server for sending mail, because it has great difficulty in maintenance.
 
@@ -15,13 +15,13 @@ Taking **Gmail's SMTP Service** as an example, refer to the following steps to c
    SMTP username: Your Gmail address (e.g. example@gmail.com)
    SMTP password: Your Gmail password
    ```
-2. 登录 ONLYOFFICE 控制台，依次打开：【设置】>【集成】>【SMTP设置】
+2. Log in ONLYOFFICE console and open: 【Settings】>【Integration】>【SMTP Settings】
 
-3. 准确填写 SMTP 参数
+3. Fill in all the fields with accurate information.
    ![ONLYOFFICE SMTP](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-smtp-1-websoft9.png)
 
-   > 【Host】与【Send Email Address】必须保持一致，否则无法发送邮件。
+   > 【Host】and【Send Email Address】must be consistent, otherwise the email cannot be sent.
 
-4. 点击【发送邮件测试】
+4. Click 【Sen Test Mail】to check if it works.
 
-More SMTP Service(Gmail, Hotmail, QQ mail, Yahoo mail, SendGrid and so on)  settings or Issues with SMTP, please refer to Websoft9's *[SMTP Guide](https://support.websoft9.com/docs/faq/tech-smtp.html)*
+More SMTP Service (Gmail, Hotmail, QQ mail, Yahoo mail, SendGrid and so on)  settings or Issues with SMTP, please refer to Websoft9's *[SMTP Guide](https://support.websoft9.com/docs/faq/tech-smtp.html)*
