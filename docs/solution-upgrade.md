@@ -13,7 +13,7 @@ Maintenance for ONLYOFFICE includes the following two tasks.
 
 ## System Update 
 
-Run a command to complete updating the system:
+Run a command to complete system update:
 
 ``` shell
 #For Ubuntu&Debian
@@ -30,7 +30,7 @@ The following upgrade steps are offered for you based on  Official document [Upg
 
 1. Take snapshots of your server before upgrade.
 
-2. Delete current ONLYOFFICE Community Server docker.
+2. Delete current ONLYOFFICE Community Server container.
    ```
    cd /data/wwwroot/onlyoffice
    sudo docker-compose down -v

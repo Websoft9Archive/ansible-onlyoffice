@@ -1,12 +1,12 @@
 # Document Server
 
-This section is offered for users who use the ONLYOFFICE Cmommunity Server deployment solution. (Different from ONLYOFFICE)
+This section is offered for users who use the ONLYOFFICE Document Server deployment solution. (Different from ONLYOFFICE)
 
 ## Components
 
 Include：Nginx, ONLYOFFICE Document Server on Docker, Docker
 
-Nginx is used to accept user access requests and forward them to the ONLYOFFICE Document Server on Docker.
+Nginx is used to accept user access requests and forward them to ONLYOFFICE Document Server on Docker.
 
 More details about components, refer to this section [*Components*](/stack-components.md).
 
