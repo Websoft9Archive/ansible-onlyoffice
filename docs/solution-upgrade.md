@@ -41,7 +41,7 @@ The following upgrade steps are offered for you based on  Official document [Upg
    docker image rm onlyoffice/communityserver
    ```
 
-4. Restart Docker.
+4. Restart container.
    ```
    cd /data/wwwroot/onlyoffice
    sudo docker-compose up -d

@@ -17,7 +17,7 @@ Use local browser to access *http://Cloud Server Internet IP* and *http://Cloud 
 
 ## Domain binding and HTTPS Settings
 
-Since Nginx has been installed as the forwarding service of ONLYOFFICE Document Server on Docker, you only need to set Nginx for domain binding and HTTPS settings. This becomes simple without modifying ONLYOFFICE Document Server on Docker Container. 
+Since Nginx has been installed as the forwarding service of ONLYOFFICE Document Server on Docker, you only need to set Nginx for domain binding and HTTPS settings. This becomes simple without modifying ONLYOFFICE Document Server on Docker container. 
 
 For detailed settings, refer to:
 
