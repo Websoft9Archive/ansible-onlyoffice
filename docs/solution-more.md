@@ -11,7 +11,7 @@ Considering the server security and subsequent maintenance, the **Domain Binding
 Steps for ONLYOFFICE domain binding are as follows:
 
 1. Connect your Cloud Server by SFTP tool.
-2. Modify [Nginx vhost configuration file](/stack-components.md#nginx),and change the **server_name**'s item to your domain name.
+2. Modify [Nginx vhost configuration file](/stack-components.md#nginx), and change the **server_name**'s item to your domain name.
    ```text
    server
    {

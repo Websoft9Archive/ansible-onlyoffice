@@ -2,7 +2,8 @@
 
 If you're having trouble with running ONLYOFFICE, here is a quick guide to solve most common problems.
 
-> Most faults about the Instance is closely related to the Instance provider, Cloud Platform. Provided you're sure the fault is caused by Cloud Platform, refer to [Cloud Platform Documentation](https://support.websoft9.com/docs/faq/tech-instance.html).
+> Most faults about the Instance is closely related to the Instance provider, Cloud Platform.  
+Provided you're sure the fault is caused by Cloud Platform, refer to [Cloud Platform Documentation](https://support.websoft9.com/docs/faq/tech-instance.html).
 
 #### How can I check the error logs?
 
