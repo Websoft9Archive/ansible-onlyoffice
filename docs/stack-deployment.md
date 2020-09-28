@@ -1,6 +1,7 @@
 # Deployment
 
-**Deployment is to copy the pre-installed ONLYOFFICE package online to your Cloud Server**. For example, after the user subscribes ONLYOFFICE on the Cloud Platform, the Platform will automatically copy the ONLYOFFICE to the corresponding Cloud Server.
+**Deployment is to copy the pre-installed ONLYOFFICE package online to your Cloud Server**. 
+For example, after the user subscribes ONLYOFFICE on the Cloud Platform, the Platform will automatically copy the ONLYOFFICE to the corresponding Cloud Server.
 
 - If ONLYOFFICE has been deployed, go to [Initial Installation](/stack-installation.md) to complete the operation.
 - If not, you need to deploy ONLYOFFICE to your cloud server first.

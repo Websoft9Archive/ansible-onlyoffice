@@ -22,6 +22,6 @@ Taking **Gmail's SMTP Service** as an example, refer to the following steps to c
 
    > 【Host】and【Send Email Address】must be consistent, otherwise the email cannot be sent.
 
-4. Click 【Sen Test Mail】to check if it works.
+4. Click 【Send Test Mail】to check if it works.
 
 More SMTP Service (Gmail, Hotmail, QQ mail, Yahoo mail, SendGrid and so on)  settings or Issues with SMTP, please refer to Websoft9's *[SMTP Guide](https://support.websoft9.com/docs/faq/tech-smtp.html)*
