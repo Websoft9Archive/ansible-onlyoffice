@@ -1,6 +1,7 @@
 # 初始化安装
 
 在云服务器上部署 ONLYOFFICE 预装包之后，请参考下面的步骤快速入门。
+> 关于 ONLYOFFICE Document Server 的安装和使用，请参考 [Document Server](/zh/solution-documentserver.md) 章节。
 
 ## 准备
 

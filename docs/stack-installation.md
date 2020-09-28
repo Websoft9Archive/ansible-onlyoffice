@@ -1,11 +1,12 @@
 # Initial Installation
 
-If you have completed the ONLYOFFICE deployment on Cloud Platform, follow the steps below to start a quick use. (For initial installation of OnlyOffice Document Server, refer to [Document Server](/solution-documentserver.md).)
+If you have completed the ONLYOFFICE deployment on Cloud Platform, follow the steps below to start a quick use.
+> For initial installation of OnlyOffice Document Server, refer to [Document Server](/solution-documentserver.md).
 
 
 ## Preparation
 
-1. Get the **Internet IP** on your Cloud Platform.
+1. Get the **Cloud Server Internet IP** on your Cloud Platform.
 2. Check your **[Inbound of Security Group Rule](https://support.websoft9.com/docs/faq/tech-instance.html)** of Cloud Console to ensure the **TCP:80** is allowed.
 3. Make a domain resolution on your Cloud Console if you want to use domain for ONLYOFFICE.
 
@@ -63,4 +64,4 @@ ONLYOFFICE requires much memory, at least 8G is recommended.
 
 #### Can ONLYOFFICE offer external document editing and preview service?
 
-Yes, service address: *http://Internet IP:9002*
+Yes, service address: *http://Cloud Server Internet IP:9002*

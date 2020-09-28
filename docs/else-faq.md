@@ -1,29 +1,29 @@
 # FAQ
 
-#### ONLYOFFICE 是否支持中文？
+#### Does ONLYOFFICE support multiple languages?
 
-支持，可以在线切换多种语言
+Yes, you can switch language online.
 
-#### Community Edition vs Enterprise Edition？
+#### What's the difference between Community Edition vs Enterprise Edition？
 
-参考官方说明 [Compare Community Edition and Enterprise Edition](https://github.com/ONLYOFFICE/CommunityServer#compare-community-edition-and-enterprise-edition)
+Refer to Official document: [Compare Community Edition and Enterprise Edition](https://github.com/ONLYOFFICE/CommunityServer#compare-community-edition-and-enterprise-edition)
 
-#### 能否介绍 ONLYOFFICE 各种版本的关系？
+#### What's the relationship between various edition of ONLYOFFICE?
 
-OnlyOffice的产品家族比较复杂，根据官方的介绍，可以分为：
+ONLYOFFICE offers different versions:
 
-* ENTERPRISE EDITION：企业版
-* COMMUNITY EDITION：开源版
-* INTEGRATION EDITION：比如集成了 ownCloud 的版本
-* DEVELOPER EDITION：开发者版本
+* ENTERPRISE EDITION
+* COMMUNITY EDITION
+* INTEGRATION EDITION
+* DEVELOPER EDITION
 
-其中每一个版本都是由：Community Server, Document Server, Mail Server 组成。  
+Each edition consists of: Community Server, Document Server, Mail Server.  
 
-COMMUNITY EDITION 是一个完全免费的版本。DEVELOPER EDITION 是适用于开发者的[收费版本](https://www.onlyoffice.com/zh/developer-edition-prices.aspx)。
+COMMUNITY EDITION is free, while [DEVELOPER EDITION](https://www.onlyoffice.com/en/developer-edition-prices.aspx) is a paid version for developers.
 
-#### 数据库密码可以修改吗？
+#### Can I change the password of database?
 
-可以，但是修改后需要同步修改 ONLYOFFICE docker-compose 文件，然后通过 docker-compose 重新运行容器。
+Yes, after the change, you need to modify the corresponding ONLYOFFICE docker-compose document, and restart Docker by docker-compose.
 
 #### If there is no domain name, can I deploy ONLYOFFICE?
 
@@ -31,13 +31,21 @@ Yes, access ONLYOFFICE by *http://Cloud Server Internet IP*.
 
 #### What is the password for the database root user?
 
-The password is stored in the server related file `/credentials/password.txt`.
+The password is stored in the related file of server `/credentials/password.txt`.
+
+#### How to forbid access from internet to phpMyAdmin?
+
+Close TCP:9090 by Security Group Setting.
+
+#### Is it possible to modify the source path of ONLYOFFICE?
+
+No.
 
 #### Is there a web-base GUI database management tool?
 
-Yes, phpMyAdmin is included. Visit by *http://Internet IP:9090*.
+Yes, phpMyAdmin is included. Access by *http://Cloud Sever Internet IP:9090*.
 
-#### How to change the permissions of filesystem?
+#### How to change uploaded file permission?
 
 Change owner(group) or permissions as below:
 
@@ -50,7 +58,7 @@ find /data/wwwroot/onlyoffice -type f -exec chmod 640 {} \;
 #### What's the difference between Deployment and Installation?
 
 - Deployment is a process of installing and configuring a series of software to the server in a different order, which is a complex system engineering.  
-- Installation is the process of starting the initial wizard after the application is prepared.  
+- Installation is the process of starting the initial wizard to complete configuration after the application is prepared.  
 - Installation is simpler than deployment. 
 
 #### What's Cloud Platform?

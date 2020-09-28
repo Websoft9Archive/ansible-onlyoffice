@@ -12,14 +12,14 @@ More details about components, refer to this section [*Components*](/stack-compo
 
 ## Access
 
-Use local browser to access *http://Internet IP* and *http://Internet IP:9002* and see the notice that ONLYOFFICE Document Server is running.
+Use local browser to access *http://Cloud Server Internet IP* and *http://Cloud Server Internet IP:9002* and see the notice that ONLYOFFICE Document Server is running.
 ![ONLYOFFICE Document Server is running](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-dkisrunning-websoft9.png)
 
 ## Domain binding and HTTPS Settings
 
-Since Nginx has been installed as the forwarding service of ONLYOFFICE Document Server on Docker, you only need to set Nginx for domain binding and HTTPS settings. Without modifying Docker, this work becomes simply.
+Since Nginx has been installed as the forwarding service of ONLYOFFICE Document Server on Docker, you only need to set Nginx for domain binding and HTTPS settings. This becomes simple without modifying ONLYOFFICE Document Server on Docker Container. 
 
-For detailed settings, Refer to:
+For detailed settings, refer to:
 
 * [Domain Binding](/solution-more.md#domainbinding)
 * [HTTPS Settings](/solution-https.md)

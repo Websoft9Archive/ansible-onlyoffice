@@ -6,7 +6,7 @@ If you're having trouble with running ONLYOFFICE, here is a quick guide to solve
 
 #### How can I check the error logs?
 
-You can find the keywords **Failed** or **error** from the logs directory: `/data/logs`
+Logs document path: `/data/logs`. You can search keywords **Failed** or **error** to check error.
 
 #### Can't start ONLYOFFICE service?
 
@@ -26,9 +26,9 @@ sudo docker inspect onlyofficecommunityserver
 sudo docker logs onlyofficecommunityserver
 ```
 
-#### 修改 MySLQ 数据库密码之后 ONLYOFFICE 无法启动？
+#### Can't start ONLYOFFICE after changing password of MySQL?
 
-修改密码之后需要需改 ONLYOFFICE docker-compose 文件中对应的数据库密码： */data/wwwroot/onlyoffice/docker-compose.yml*，然后运行如下命令：
+You need to modify the corresponding database password */data/wwwroot/onlyoffice/docker-compose.yml* in ONLYOFFICE docker-compose document, and run the following commands:
 
 ```
 cd /data/wwwroot/onlyoffice
@@ -36,15 +36,15 @@ docker-compose down -v
 docker-compose up -d
 ```
 
-#### ONLYOFFICE 显示502错误？
+#### ONLYOFFICE displays 502 Bad Gateway?
 
-首先通过命令 `sudo docker logs onlyofficecommunityserver`，查看是否有错误日志。  
+First run the command `sudo docker logs onlyofficecommunityserver` to check if there's error logs.  
 
-一般是由文件权限不足或数据连接问题导致。
+Generally, it's caused by the lack of file permission or the failure of data connection.
 
-#### 重新安装了数据库导致 ONLYOFFICE 无法运行？
+#### Can't run ONLYOFFICE after re-installing database?
 
-ONLYOFFICE 对数据库的配置有严格的要求，保证符合如下要求：
+ONLYOFFICE has strict rules for database configuration, ensure you meet the following requirements:
 
 ```
 echo "[mysqld]

@@ -1,6 +1,6 @@
 # MySQL
 
-ONLYOFFICE deployment package includes MySQL and Web-GUI tool phpMyAdmin for MySQL management. 
+ONLYOFFICE deployment package includes MySQL and Web-GUI tool phpMyAdmin.
 
 Follow the steps below to use it:
 

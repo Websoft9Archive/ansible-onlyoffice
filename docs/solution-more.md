@@ -36,14 +36,14 @@ Steps for setting preview and editing are as follows, acting as reference for yo
 * Log in ONLYOFFICE, open:【Settings】>【Integration】>【Document Service】and you can see the settings.
   ![ONLYOFFICE document service](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-preview-websoft9.png)
 
-* Use local browser to access：*http://Internet IP:9002*, and get the notice that OnlyOffice Document Server is running.
+* Use local browser to access：*http://Cloud Server Internet IP:9002*, and get the notice that OnlyOffice Document Server is running.
    ![ONLYOFFICE document is running ](https://libs.websoft9.com/Websoft9/DocsPicture/en/onlyoffice/onlyoffice-dkisrunning-websoft9.png)
 
 > Please don't modify the default settings unless you want to replace it with other document service.
 
 ## Reset password
 
-There are two common measures to reset password for ONLYOFFICE: change password and forgot password. 
+There are two common measures to reset password for ONLYOFFICE:  
 
 ### Change password
 

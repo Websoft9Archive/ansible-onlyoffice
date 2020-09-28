@@ -6,7 +6,7 @@ The ONLYOFFICE deployment package contains a sequence of software (referred to a
 
 ### ONLYOFFICE
 
-ONLYOFFICE in this project consists of ONLYOFFICE Community Server and ONLYOFFICE Document Server. Both are installed on Docker, and complete integration.
+ONLYOFFICE in this project consists of ONLYOFFICE Community Server and ONLYOFFICE Document Server. Both are installed on Docker, and complete integrated.
 
 #### ONLYOFFICE Community Server
 

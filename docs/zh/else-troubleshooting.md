@@ -25,7 +25,7 @@ sudo docker inspect onlyofficecommunityserver
 sudo docker logs onlyofficecommunityserver
 ```
 
-#### 修改 MySLQ 数据库密码之后 ONLYOFFICE 无法启动？
+#### 修改 MySQl 数据库密码之后 ONLYOFFICE 无法启动？
 
 修改密码之后需要需改 ONLYOFFICE docker-compose 文件中对应的数据库密码： */data/wwwroot/onlyoffice/docker-compose.yml*，然后运行如下命令：
 
