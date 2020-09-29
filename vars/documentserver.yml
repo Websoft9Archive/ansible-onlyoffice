@@ -5,3 +5,5 @@ docker_applications:
 
 nginx_appname: "onlyofficedocumentserver"
 nginx_reverse_proxy_port: "9002"
+nginx_vhost_mode: "reverse"
+nginx_certbot: True
