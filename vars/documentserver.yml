@@ -1,7 +1,4 @@
   
-region: "0"
-
-common_os_support: ["CentOS", "Ubuntu", "Amazon", "OracleLinux"]
 # This vars is only for ONLYOFFICE Document Server which will cover the follow vars for ONLYOFFICE
 
 docker_applications: 
@@ -9,5 +6,3 @@ docker_applications:
 
 nginx_appname: "onlyofficedocumentserver"
 nginx_reverse_proxy_port: "9002"
-nginx_vhost_mode: "reverse"
-nginx_certbot: True
