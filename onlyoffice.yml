@@ -4,11 +4,13 @@
   become_method: sudo
   gather_facts: True
 
-  pre_tasks:
-    - include_vars: vars/documentserver.yml
-      when: not onlyoffice_install
-    - include_vars: vars/main.yml
-      when: onlyoffice_install
+  vars_files:
+    - vars/documentserver.yml
+#  pre_tasks:
+#    - include_vars: vars/documentserver.yml
+#      when: not onlyoffice_install
+#    - include_vars: vars/main.yml
+#      when: onlyoffice_install
 
   vars_prompt:
     - name: 'onlyoffice_selection'
