@@ -6,7 +6,7 @@
 
   vars_files:
     - vars/main.yml
-  when: not onlyoffice_install
+  when: onlyoffice_install
 
   vars_prompt:
     - name: 'onlyoffice_selection'
