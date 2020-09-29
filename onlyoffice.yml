@@ -23,9 +23,9 @@
     onlyoffice_install: "{{onlyoffice_select[onlyoffice_selection]}}"
     onlyoffice_db_password: "{{mysql_root_password}}"
     
-#  pre_tasks:
-#    - include_vars: vars/documentserver.yml
-#      when: not onlyoffice_install
+  pre_tasks:
+    - include_vars: vars/documentserver.yml
+      when: not onlyoffice_install
 
   roles:
     - {role: role_common, tags: "role_common"}
