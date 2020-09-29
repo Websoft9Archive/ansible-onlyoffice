@@ -5,12 +5,7 @@
   gather_facts: True
 
   vars_files:
-    - vars/documentserver.yml
-#  pre_tasks:
-#    - include_vars: vars/documentserver.yml
-#      when: not onlyoffice_install
-#    - include_vars: vars/main.yml
-#      when: onlyoffice_install
+    - vars/main.yml
 
   vars_prompt:
     - name: 'onlyoffice_selection'
@@ -27,6 +22,10 @@
 
     onlyoffice_install: "{{onlyoffice_select[onlyoffice_selection]}}"
     onlyoffice_db_password: "{{mysql_root_password}}"
+    
+#  pre_tasks:
+#    - include_vars: vars/documentserver.yml
+#      when: not onlyoffice_install
 
   roles:
     - {role: role_common, tags: "role_common"}
