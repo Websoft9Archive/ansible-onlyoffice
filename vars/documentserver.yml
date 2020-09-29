@@ -1,3 +1,7 @@
+  
+region: "0"
+
+common_os_support: ["CentOS", "Ubuntu", "Amazon", "OracleLinux"]
 # This vars is only for ONLYOFFICE Document Server which will cover the follow vars for ONLYOFFICE
 
 docker_applications: 
