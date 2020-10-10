@@ -41,9 +41,10 @@ init_db:
     service_after: docker.service
     config_paths:
       - /data/wwwroot/onlyoffice/docker-compose.yml
-    commands: 
-      - sudo sleep 40s
-      - cd /data/wwwroot/onlyoffice
-      - sudo docker-compose down -v
-      - sudo rm -rf communityserver
-      - sudo docker-compose up -d
+
+init_docker:
+  onlyoffice:
+    service_after: "docker.service"
+    compose_path: "/data/wwwroot/onlyoffice/docker-compose.yml"
+    volumes: 
+      - /data/wwwroot/onlyoffice/communityserver
