@@ -42,8 +42,8 @@ init_db:
     config_paths:
       - /data/wwwroot/onlyoffice/docker-compose.yml
     commands: 
+      - sudo sleep 40s
       - cd /data/wwwroot/onlyoffice
       - sudo docker-compose down -v
-      - sudo sleep 20s
       - sudo rm -rf communityserver
       - sudo docker-compose up -d
