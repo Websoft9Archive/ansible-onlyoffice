@@ -64,6 +64,7 @@ ONLYOFFICE 对内存要求比较高，建议最少 8G 内存
 
 可以，*http://服务器公网IP:9002* 即服务地址
 
+
 #### ONLYOFFICE Document Server提供文档编辑与预览服务时，打不开
 
 场景：
@@ -72,7 +73,7 @@ ONLYOFFICE 对内存要求比较高，建议最少 8G 内存
 - 服务器上安装 ONLYOFFICE Document Server，通过http://ip：9002, 对外提供服务
 
 1、在NextCloud通过 http://ip：9002 配置 ONLYOFFICE Document Server 时失败，解决办法：
-> 在HTTPS环境要使用 ONLYOFFICE Document Server ，也必须为其配置域名并设置HTTPS
+> 在HTTPS环境要使用 ONLYOFFICE Document Server ，也必须通过HTTPS安全访问，需为其配置域名并设置HTTPS
 - 配置域名onlyoffice.mydomain.com指向服务器IP
 - 配置vhost，将9002端口通过 onlyoffice.mydomain.com 域名代理访问
 ~~~
@@ -85,7 +86,7 @@ ONLYOFFICE 对内存要求比较高，建议最少 8G 内存
   ProxyPassReverse / http://127.0.0.1:9002/
   </VirtualHost>
 ~~~
-- 通过certboot配置HTTPS，产生如下配置
+- 通过certbot配置HTTPS，产生如下配置
 ~~~
 #vhost.conf文件片段
 <VirtualHost *:80>
@@ -118,7 +119,7 @@ Include /etc/letsencrypt/options-ssl-apache.conf
 </IfModule>
 ~~~
 这时，在Nextcloud中通过域名 https://onlyoffice.mydomain.com 配置文档服务，成功。但加载文件预览时，失败。解决方法如下：
-- 在 vhost-le-ssl.conf 加配置项：RequestHeader set X-Forwarded-Proto "https" ，使客户端和代理服之间的连接所采用的传输协议一致为 HTTPS
+- 在 vhost-le-ssl.conf 加配置项：RequestHeader set X-Forwarded-Proto "https" ，使客户端和代理服务之间的连接所采用的传输协议一致为 HTTPS
 ~~~
 #vhost-le-ssl.conf片段
 </IfModule>
@@ -139,3 +140,5 @@ Include /etc/letsencrypt/options-ssl-apache.conf
 ~~~
 
 - NextCloud中点击文件成功调用ONLYOFFICE Document Server服务，开启文档预览和编辑
+
+
