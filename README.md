@@ -32,9 +32,7 @@ Additional requirements at least 6 GB of swap
 
 ## 本项目安装的是 OnyOffice 最新版吗？
 
-对 OnyOffice Community Edition 来说，本项目采用官方提供的[安装脚本](https://helpcenter.onlyoffice.com/server/linux/opensource/opensource-script-rpm-deb-installation.aspx)进行安装，官方会在安装脚本中 ONLYOFFICE 的版本进行控制，即每一次安装均可保证为 ONLYOFFICE 官方发布的最新稳定版。  
-
-对 OnyOffice Document Server 来说，本项目采用的是 Docker 镜像安装，即每一次安装均可保证为 ONLYOFFICE 官方发布的最新稳定版。
+对 OnyOffice Community Edition 和 OnyOffice Document Server 来说，本项目均采用 Docker 镜像安装，即每一次安装均可保证为 ONLYOFFICE 官方发布的最新稳定版。
 
 ## 安装指南
 
