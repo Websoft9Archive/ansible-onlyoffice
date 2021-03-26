@@ -19,11 +19,11 @@
   shell: sudo echo "onlyofficedocumentserver version:" $(docker images |grep onlyoffice/documentserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
 
 - name: Check onlyofficecommunityserver Service
-  shell: sudo docker ps | grep onlyofficecommunityserver
+  shell: sudo docker ps | grep onlyoffice-community-server
   register: check_onlyofficecommunityserver_service
   notify: check_onlyofficecommunityserver_service
 
 - name: Check onlyofficedocumentserver Service
-  shell: sudo docker ps | grep onlyofficedocumentserver
+  shell: sudo docker ps | grep onlyoffice-document-server
   register: check_onlyofficedocumentserver_service
   notify: check_onlyofficedocumentserver_service
