@@ -1,45 +1,50 @@
 ---
-- name: Create ONLYOFFICE user
-  user:
-    name: onlyoffice 
-    shell: /user/sbin/nologin
+- name: Clone onlyoffice in Websoft9 
+  git:
+    repo: "https://github.com/Websoft9/docker-onlyofficecommunityserver.git"
+    dest: "/data/wwwroot/onlyoffice"
 
-- name: Get Docker Gateway
-  shell: ip route show | grep docker0 | awk '{print $9}'
-  register: docker_gateway
-  
-- name: Create Directory /data/wwwroot/onlyoffice
-  file:
-    path: /data/wwwroot/onlyoffice
+- name: Create dir for onlyoffice
+  file: 
+    name: "/data/wwwroot/onlyoffice/{{item}}"
     state: directory
-    owner: onlyoffice
-    group: onlyoffice
-    recurse: true
-
-- name: Upload docker-compose.yml file
-  template:
-    src: docker-compose.yml
-    dest: /data/wwwroot/onlyoffice
+    recurse: yes
+  loop:   
+    - mail_data
+    - mail_certs
+    - mail_log
+    - mail_mysql
+    - document_data
+    - document_log
+    - document_forgotten
+    - community_mysql
+    - community_data
+    - community_log
+    - community_letsencrypt
+    - controlpanel_data
+    - controlpanel_log
+    - mysql_data
 
 - name: Run the docker-compose
-  shell: 
-    cmd: docker-compose up -d
+  shell: |
+    mv docker-compose.workspace.yml docker-compose.yml
+    docker-compose -f up -d
+    sleep 30
+  args:
     chdir: /data/wwwroot/onlyoffice
 
-- name: Create a symbolic link
-  file:
-    src: '{{item.src}}'
-    dest: '{{item.dest}}'
-    state: link
-  with_items:
-    - {src: "/data/wwwroot/onlyoffice/docker-compose.yml",dest: "/data/config/apps-onlyoffice-compose.yml"}
-    - {src: "/data/apps/onlyofficedocumentserver",dest: "/data/wwwroot/onlyoffice/onlyofficedocumentserver"}
+- name: Check onlyofficecommunityserver Version
+  shell: sudo echo "onlyofficecommunityserver version:" $(docker images |grep onlyoffice/communityserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
 
+- name: Check onlyofficedocumentserver Version
+  shell: sudo echo "onlyofficedocumentserver version:" $(docker images |grep onlyoffice/documentserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
 
-- name: Check ONLYOFFICE Version
-  shell: sudo sh -c "docker image inspect onlyoffice/communityserver  | grep onlyoffice.community.version | sed -n 1p  1>> /data/logs/install_version.txt"
-
-- name: Check ONLYOFFICE Service
+- name: Check onlyofficecommunityserver Service
   shell: sudo docker ps | grep onlyofficecommunityserver
-  register: check_onlyoffice_service
-  notify: check_onlyoffice_service
+  register: check_onlyofficecommunityserver_service
+  notify: check_onlyofficecommunityserver_service
+
+- name: Check onlyofficedocumentserver Service
+  shell: sudo docker ps | grep onlyofficedocumentserver
+  register: check_onlyofficedocumentserver_service
+  notify: check_onlyofficedocumentserver_service

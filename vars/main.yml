@@ -1,50 +1,36 @@
 region: "0"
 
-common_os_support: ["CentOS", "Ubuntu", "Amazon", "OracleLinux"]
-
-mysql_version: "5.7"       
-mysql_root_password: "123456"
-mysql_remote: True
-
-# refer to: https://github.com/ONLYOFFICE/Docker-CommunityServer/blob/master/README.md#installing-mysql
-mysql_configuration_extras:
-  - name: sql_mode
-    value: "'NO_ENGINE_SUBSTITUTION'"
-  - name: max_connections
-    value: 1000
-  - name: max_allowed_packet
-    value: 1048576000
-  - name: group_concat_max_len
-    value: 2048
-
 nginx_appname: "onlyoffice"
 nginx_vhost_mode: "reverse"
 nginx_reverse_proxy_port: "9003"
 nginx_certbot: True
 
-mysql_databases:
- - name: onlyoffice
- 
-mysql_users:
- - name: onlyoffice
-   priv: 'onlyoffice.*:ALL'
-
-docker_applications: 
-  - onlyofficedocumentserver
-  - phpmyadmin
-
-init_db: 
-  mysql:
-    admin: root
-    users: ["onlyoffice"]
-    password: "123456"
-    service_after: docker.service
-    config_paths:
-      - /data/wwwroot/onlyoffice/docker-compose.yml
-
 init_docker:
   onlyoffice:
+    admin_username: me@example.com
+    admin_password: "admin123"
+    db: onlyoffice
+    db_name: onlyoffice
+    db_username: onlyoffice
+    db_password: "123456"
     service_after: "docker.service"
     compose_path: "/data/wwwroot/onlyoffice/docker-compose.yml"
+    compose_commands:
+      - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/docker-compose.yml
+      - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/config/mysql/docker-entrypoint-initdb.d/onlyoffice-initdb.sql
     volumes: 
-      - /data/wwwroot/onlyoffice/communityserver
+      - mail_data
+      - mail_certs
+      - mail_log
+      - mail_mysql
+      - document_data
+      - document_log
+      - document_forgotten
+      - community_mysql
+      - community_data
+      - community_log
+      - community_letsencrypt
+      - controlpanel_data
+      - controlpanel_log
+      - mysql_data
+    
