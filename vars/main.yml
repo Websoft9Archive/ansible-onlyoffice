@@ -7,8 +7,6 @@ nginx_certbot: True
 
 init_docker:
   onlyoffice:
-    admin_username: admin
-    admin_password: "admin"
     db: onlyoffice
     db_name: onlyoffice
     db_username: onlyoffice
