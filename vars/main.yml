@@ -19,4 +19,13 @@ init_docker:
     compose_commands:
       - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/docker-compose.yml
       - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/config/mysql/docker-entrypoint-initdb.d/onlyoffice-initdb.sql
-    
+    volumes: 
+      - /data/wwwroot/onlyoffice/document_data
+      - /data/wwwroot/onlyoffice/document_log
+      - /data/wwwroot/onlyoffice/document_forgotten
+      - /data/wwwroot/onlyoffice/community_mysql
+      - /data/wwwroot/onlyoffice/community_log
+      - /data/wwwroot/onlyoffice/community_letsencrypt
+      - /data/wwwroot/onlyoffice/controlpanel_data
+      - /data/wwwroot/onlyoffice/controlpanel_log
+      - /data/wwwroot/onlyoffice/mysql_data
