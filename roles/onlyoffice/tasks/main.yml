@@ -1,4 +1,7 @@
 ---
+- name: Delete onlyoffice dir for sec_installation
+  shell: rm -rf /data/wwwroot/onlyoffice
+
 - name: Clone onlyoffice in Websoft9 
   git:
     repo: "{{onlyoffice_url}}"
