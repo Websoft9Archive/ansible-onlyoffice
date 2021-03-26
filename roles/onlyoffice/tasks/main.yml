@@ -28,8 +28,7 @@
 
 - name: Run the docker-compose
   shell: |
-    mv docker-compose.workspace.yml docker-compose.yml
-    docker-compose -f up -d
+    docker-compose up -d
     sleep 30
   args:
     chdir: /data/wwwroot/onlyoffice
