@@ -1,8 +1,9 @@
 ---
 - name: Clone onlyoffice in Websoft9 
   git:
-    repo: "https://github.com/Websoft9/docker-onlyofficecommunityserver.git"
+    repo: "{{onlyoffice_url}}"
     dest: "/data/wwwroot/onlyoffice"
+    version: dev
 
 - name: Create dir for onlyoffice
   file: 
