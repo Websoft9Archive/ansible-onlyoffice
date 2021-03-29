@@ -6,7 +6,7 @@
   git:
     repo: "{{onlyoffice_url}}"
     dest: "/data/wwwroot/onlyoffice"
-    version: dev
+    version: main
 
 - name: Run the docker-compose
   shell: |
