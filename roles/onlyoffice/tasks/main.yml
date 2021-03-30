@@ -4,7 +4,7 @@
 
 - name: Create dir for onlyoffice
   file:
-    path: "{{item}}"
+    path: "{{items}}"
     state: directory
     recurse: yes
     loop: 
