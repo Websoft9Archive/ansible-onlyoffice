@@ -33,7 +33,6 @@
   - {src: /data/wwwroot/onlyoffice/community_log/,dest: /data/logs/communityserver}
   - {src: /data/wwwroot/onlyoffice/mysql_data/,dest: /data/db/mysql/data}
   - {src: /data/wwwroot/onlyoffice/config/,dest: /data/db/mysql/config}
-  - {src: /var/log/mysql/error.log,dest: /data/db/mysql/error.log}
 
 - name: Check onlyofficecommunityserver Version
   shell: sudo echo "onlyofficecommunityserver version:" $(docker images |grep onlyoffice/communityserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
