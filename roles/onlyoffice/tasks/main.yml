@@ -4,10 +4,10 @@
 
 - name: Create dir for onlyoffice
   file:
-    path: "{{items}}"
+    path: "{{item}}"
     state: directory
     recurse: yes
-    loop: 
+  loop: 
     - /data/db/mysql/
 
 - name: Clone onlyoffice in Websoft9 
