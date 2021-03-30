@@ -9,6 +9,7 @@
     recurse: yes
   loop: 
     - /data/db/mysql/
+    - /var/log/mysql/
 
 - name: Create log file for mysql
   file: 
