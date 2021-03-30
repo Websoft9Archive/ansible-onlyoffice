@@ -2,11 +2,18 @@
 - name: Delete onlyoffice dir for sec_installation
   shell: rm -rf /data/wwwroot/onlyoffice
 
+- name: Create dir for onlyoffice
+  file:
+    path: "{{item}}"
+    state: directory
+    recurse: yes
+    loop: 
+    - /data/db/mysql/
+
 - name: Clone onlyoffice in Websoft9 
   git:
     repo: "{{onlyoffice_url}}"
     dest: "/data/wwwroot/onlyoffice"
-    version: main
 
 - name: Run the docker-compose
   shell: |
@@ -14,6 +21,18 @@
     sleep 30
   args:
     chdir: /data/wwwroot/onlyoffice
+
+- name: Create a Apache Log symbolic link
+  file:
+    src: '{{item.src}}'
+    dest: '{{item.dest}}'
+    state: link
+  with_items:
+  - {src: /data/wwwroot/onlyoffice/document_log/,dest:  /data/logs/documentserver}
+  - {src: /data/wwwroot/onlyoffice/community_log/,dest: /data/logs/communityserver}
+  - {src: /data/wwwroot/onlyoffice/mysql_data/,dest: /data/db/mysql/data}
+  - {src: /data/wwwroot/onlyoffice/config/,dest: /data/db/mysql/config}
+  - {src: /var/log/mysql/error.log,dest: /data/db/mysql/error.log}
 
 - name: Check onlyofficecommunityserver Version
   shell: sudo echo "onlyofficecommunityserver version:" $(docker images |grep onlyoffice/communityserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
