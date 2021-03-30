@@ -9,6 +9,7 @@
     recurse: yes
   loop: 
     - /data/db/mysql/
+    - /data/log/mysql/
 
 - name: Clone onlyoffice in Websoft9 
   git:
@@ -28,11 +29,13 @@
     src: '{{item.src}}'
     dest: '{{item.dest}}'
     state: link
+    force: yes
   with_items:
   - {src: /data/wwwroot/onlyoffice/document_log/,dest:  /data/logs/documentserver}
   - {src: /data/wwwroot/onlyoffice/community_log/,dest: /data/logs/communityserver}
   - {src: /data/wwwroot/onlyoffice/mysql_data/,dest: /data/db/mysql/data}
   - {src: /data/wwwroot/onlyoffice/config/,dest: /data/db/mysql/config}
+  - {src: /data/log/mysql/,dest: /data/db/mysql/log}
 
 - name: Check onlyofficecommunityserver Version
   shell: sudo echo "onlyofficecommunityserver version:" $(docker images |grep onlyoffice/communityserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
