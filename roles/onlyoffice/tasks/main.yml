@@ -14,6 +14,15 @@
   args:
     chdir: /data/wwwroot/onlyoffice
 
+- name: Create symbolic links
+  file:
+    src: '{{item.src}}'
+    dest: '{{item.dest}}'
+    state: link
+  with_items:
+    - {src: /data/wwwroot/onlyoffice,dest: /data/apps/onlyofficedocumentserver}
+
+    
 - name: Check onlyofficecommunityserver Version
   shell: sudo echo "onlyofficecommunityserver version:" $(docker images |grep onlyoffice/communityserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
 
