@@ -2,6 +2,11 @@
 - name: Delete onlyoffice dir for sec_installation
   shell: rm -rf /data/wwwroot/onlyoffice
 
+- name: Clone onlyoffice in Websoft9 
+  git:
+    repo: "{{onlyoffice_url}}"
+    dest: "/data/wwwroot/onlyoffice"
+
 - name: Create dir for onlyoffice
   file:
     path: "{{item}}"
@@ -11,12 +16,7 @@
     - /data/wwwroot/onlyoffice/volumes
     - /data/db/mysql/
     - /var/log/mysql/
-
-- name: Clone onlyoffice in Websoft9 
-  git:
-    repo: "{{onlyoffice_url}}"
-    dest: "/data/wwwroot/onlyoffice"
-
+    
 - name: Run the docker-compose
   shell: |
     docker-compose -f docker-compose-production.yml up -d
