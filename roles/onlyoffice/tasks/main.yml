@@ -8,13 +8,9 @@
     state: directory
     recurse: yes
   loop: 
+    - /data/wwwroot/onlyoffice/volumes
     - /data/db/mysql/
     - /var/log/mysql/
-
-- name: Create log file for mysql
-  file: 
-    path: "/var/log/mysql/error.log"
-    state: touch
 
 - name: Clone onlyoffice in Websoft9 
   git:
@@ -23,7 +19,7 @@
 
 - name: Run the docker-compose
   shell: |
-    docker-compose up -d
+    docker-compose -f docker-compose-production.yml up -d
     sleep 30
   args:
     chdir: /data/wwwroot/onlyoffice
@@ -35,12 +31,10 @@
     state: link
     force: yes
   with_items:
-  - {src: /data/wwwroot/onlyoffice/document_log/,dest:  /data/logs/documentserver}
-  - {src: /data/wwwroot/onlyoffice/community_log/,dest: /data/logs/communityserver}
-  - {src: /data/wwwroot/onlyoffice/mysql_data/,dest: /data/db/mysql/data}
-  - {src: /data/wwwroot/onlyoffice/config/,dest: /data/db/mysql/config}
-  - {src: /var/log/mysql/error.log,dest: /data/db/mysql/error.log}
-  - {src: /var/log/mysql/error.log,dest: /data/logs/mysql}
+  - {src: /data/wwwroot/onlyoffice/volumes/document_log/,dest:  /data/logs/documentserver}
+  - {src: /data/wwwroot/onlyoffice/volumes/community_log/,dest: /data/logs/communityserver}
+  - {src: /data/wwwroot/onlyoffice/volumes/mysql_data/,dest: /data/db/mysql/data}
+  - {src: /data/wwwroot/onlyoffice/volumes/config/,dest: /data/db/mysql/config}
 
 - name: Check onlyofficecommunityserver Version
   shell: sudo echo "onlyofficecommunityserver version:" $(docker images |grep onlyoffice/communityserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
