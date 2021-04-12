@@ -26,23 +26,20 @@ yum update -y --skip-broken
 
 ## ONLYOFFICE Upgrade
 
-The following upgrade steps are offered for you based on  Official document [Upgrading ONLYOFFICE Community Server](https://github.com/ONLYOFFICE/Docker-CommunityServer#upgrading-onlyoffice-community-server).
+This deployment solution is based on Docker and so you can upgrade ONLYOFFICE by the standard process of Docker:  
 
-1. Take snapshots of your server before upgrade.
+> You should complete a snapshot backup before upgrade
 
-2. Delete current ONLYOFFICE Community Server container.
+1. Use **SSH** to login Server, cd to the directory of docker-compose file, then pull images
    ```
    cd /data/wwwroot/onlyoffice
+   sudo docker-compose pull
+   ```
+2. Stop the containers
+   ```
    sudo docker-compose down -v
    ```
-
-3. Delete the current image of ONLYOFFICE Community Server.
+3. Recreate containers
    ```
-   docker image rm onlyoffice/communityserver
-   ```
-
-4. Restart container.
-   ```
-   cd /data/wwwroot/onlyoffice
    sudo docker-compose up -d
    ```

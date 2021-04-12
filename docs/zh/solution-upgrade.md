@@ -24,25 +24,24 @@ yum update -y --skip-broken
 
 ## ONLYOFFICE升级
 
-升级是一件系统工程，请在升级前务必做好快照备份。
+ONLYOFFICE 采用 [Docker 部署](https://github.com/ONLYOFFICE/Docker-CommunityServer#upgrading-onlyoffice-community-server)，其升级流程：拉取镜像 > 删除容器 > 重建容器
 
-我们针对于官方升级文档 [Upgrading ONLYOFFICE Community Server](https://github.com/ONLYOFFICE/Docker-CommunityServer#upgrading-onlyoffice-community-server) 提供可操作的升级方案，具体如下：
+> 升级之前请完成服务器的快照备份，以防不测。
 
-1. 做好服务器的快照备份
-
-2. 删除当前 ONLYOFFICE Community Server 容器
+1. 使用 SSH 登录服务，进入到 ONLYOFFICE 目录后，拉取最新版本镜像
    ```
    cd /data/wwwroot/onlyoffice
+   sudo docker-compose pull
+   ```
+   > 系统会自动拉取最新版镜像，如果没有镜像可拉取，则无需更新
+
+2. 停止并删除当前的 ONLYOFFICE 容器
+
+   ```
    sudo docker-compose down -v
    ```
 
-3. 删除当前 ONLYOFFICE Community Server 镜像
+3. 重新创建 ONLYOFFICE 容器
    ```
-   docker image rm onlyoffice/communityserver
-   ```
-
-4. 重新启动容器
-   ```
-   cd /data/wwwroot/onlyoffice
-   sudo docker-compose up -d
+   docker-compose up -d
    ```
