@@ -29,6 +29,18 @@ sudo docker rm onlyofficedocumentserver
 sudo docker exec -it onlyofficedocumentserver /bin/bash
 ```
 
+### MySQL Server on Docker
+```shell
+sudo docker inspect onlyoffice-mysql-server
+sudo docker start onlyoffice-mysql-server
+sudo docker restart onlyoffice-mysql-server
+sudo docker stop onlyoffice-mysql-server
+sudo docker rm onlyoffice-mysql-server
+
+# 进入容器运行命令
+sudo docker exec -it onlyoffice-mysql-server /bin/bash
+```
+
 ### phpMyAdmin on Docker
 ```shell
 sudo docker inspect phpmyadmin
@@ -36,15 +48,6 @@ sudo docker start phpmyadmin
 sudo docker restart phpmyadmin
 sudo docker stop phpmyadmin
 sudo docker rm phpmyadmin
-```
-
-### MySQL
-
-```shell
-sudo systemctl start mysql
-sudo systemctl stop mysql
-sudo systemctl restart mysql
-sudo systemctl status mysql
 ```
 
 ### Nginx

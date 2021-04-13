@@ -8,11 +8,11 @@
 
 Nginx 用于接受用户访问请求，然后转发给 ONLYOFFICE Document Server on Docker。  
 
-组件的详细信息参考[*参数*](zh/stack-components.md)章节。
+组件的详细信息参考 [*参数*](/zh/stack-components.md) 章节。
 
 ## 访问
 
-本地浏览器访问：*http://服务器公网IP* 和 *http://服务器公网IP:9002* 均可看到 OnlyOffice Document Server 正在运行的提示。  
+本地浏览器访问：*http://服务器公网IP:9002* 可看到 OnlyOffice Document Server 正在运行的提示。  
 ![ONLYOFFICE Document Server is running](https://libs.websoft9.com/Websoft9/DocsPicture/zh/onlyoffice/onlyoffice-dkisrunning-websoft9.png)
 
 ## 域名绑定
