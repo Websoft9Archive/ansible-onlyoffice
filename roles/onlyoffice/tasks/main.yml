@@ -15,7 +15,6 @@
   loop: 
     - /data/wwwroot/onlyoffice/volumes
     - /data/db/mysql/
-    - /var/log/mysql/
     
 - name: Run the docker-compose
   shell: |
