@@ -15,6 +15,8 @@ Nginx 用于接受用户访问请求，然后转发给 ONLYOFFICE Document Serve
 本地浏览器访问：*http://服务器公网IP:9002* 可看到 OnlyOffice Document Server 正在运行的提示。  
 ![ONLYOFFICE Document Server is running](https://libs.websoft9.com/Websoft9/DocsPicture/zh/onlyoffice/onlyoffice-dkisrunning-websoft9.png)
 
+> 如果画面的提示不是*OnlyOffice Document Server is running*，则说明服务运行异常。
+
 ## 域名绑定
 
 完成域名解析后，请针对不同的 Web 服务器下，完成对应的域名绑定操作：
