@@ -20,7 +20,7 @@ init_docker:
     service_after: "docker.service"
     compose_path: "/data/wwwroot/onlyoffice/docker-compose-production.yml"
     compose_commands:
-      - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/docker-compose-production.yml
+      - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/.env
       - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/config/mysql/docker-entrypoint-initdb.d/onlyoffice-initdb.sql
     volumes: 
       - /data/wwwroot/onlyoffice/volumes
