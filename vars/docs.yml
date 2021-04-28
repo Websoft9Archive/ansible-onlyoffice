@@ -2,7 +2,6 @@
 region: "0"
 common_install_docker: True
 docker_install: False
-mysql_install_server: False
 
 nginx_appname: "onlyofficedocs"
 nginx_vhost_mode: "reverse"
