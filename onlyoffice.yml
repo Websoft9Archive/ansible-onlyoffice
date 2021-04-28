@@ -7,12 +7,32 @@
   vars_files:
     - vars/main.yml
 
+  vars_prompt:
+  - name: 'onlyoffice_selection'
+    prompt: "\nWhich application do you want to install? [ 1/2 ] \n\n
+    1: OnlyOffice Community Edition (include Document Server and Community Server) \n
+    2: OnlyOffice Document Server\n"
+    private: no
+    default: 1
+
+  vars:
+    onlyoffice_select:
+      '1': True
+      '2': False
+
+    onlyoffice_install: "{{onlyoffice_select[onlyoffice_selection]}}"
+    
+  pre_tasks:
+    - include_vars: vars/docs.yml
+      when: not onlyoffice_install
+
   roles:
     - {role: role_common, tags: "role_common"}
     - {role: role_cloud, tags: "role_cloud"}
+    - {role: role_mysql, tags: "role_mysql", when: onlyoffice_install }
     - {role: role_nginx, tags: "role_nginx"}
     - {role: role_docker, tags: "role_docker"}
-    - {role: onlyoffice, tags: "onlyoffice"}
-    - {role: role_init, tags: "role_init"}
+    - {role: onlyoffice, tags: "onlyoffice", when: onlyoffice_install}
+    - {role: role_init, tags: "role_init", when: onlyoffice_install}
     - {role: role_preend, tags: "role_preend"}
     - {role: role_end, tags: "role_end"}
