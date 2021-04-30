@@ -20,6 +20,8 @@ init_docker:
     service_after: "docker.service"
     compose_path: "/data/wwwroot/onlyoffice/docker-compose-production.yml"
     compose_commands:
+      - export DOCKER_CLIENT_TIMEOUT=500
+      - export COMPOSE_HTTP_TIMEOUT=500
       - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/.env
       - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/config/mysql/docker-entrypoint-initdb.d/onlyoffice-initdb.sql
     volumes: 
