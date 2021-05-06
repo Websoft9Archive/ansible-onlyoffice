@@ -35,18 +35,18 @@
   - {src: /data/wwwroot/onlyoffice/volumes/mysql_data/,dest: /data/db/mysql/data}
   - {src: /data/wwwroot/onlyoffice/volumes/config/,dest: /data/db/mysql/config}
 
-- name: Check onlyofficecommunityserver Version
+- name: Check onlyoffice Version
   shell: sudo echo "onlyofficecommunityserver version:" $(docker images |grep onlyoffice/communityserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
 
 - name: Check onlyofficedocumentserver Version
   shell: sudo echo "onlyofficedocumentserver version:" $(docker images |grep onlyoffice/documentserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
 
-- name: Check onlyofficecommunityserver Service
-  shell: sudo docker ps | grep onlyoffice-community-server
-  register: check_onlyofficecommunityserver_service
-  notify: check_onlyofficecommunityserver_service
+- name: Check onlyoffice Service
+  shell: echo "onlyoffice" `docker inspect onlyoffice |grep -i status`
+  register: check_onlyoffice_service
+  notify: check_onlyoffice_service
 
 - name: Check onlyofficedocumentserver Service
-  shell: sudo docker ps | grep onlyoffice-document-server
-  register: check_onlyofficedocumentserver_service
-  notify: check_onlyofficedocumentserver_service
+  shell: echo "onlyoffice-docs" `docker inspect onlyoffice-docs |grep -i status`
+  register: check_onlyofficedocs_service
+  notify: check_onlyofficedocs_service

@@ -1,7 +1,7 @@
 - name: check_onlyofficedocumentserver_service
   debug:
-    var: check_onlyofficedocumentserver_service.stdout
+    var: check_onlyoffice_service.stdout
 
 - name: check_onlyofficecommunityserver_service
   debug:
-    var: check_onlyofficecommunityserver_service.stdout
+    var: check_onlyofficedocs_service.stdout
