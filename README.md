@@ -26,13 +26,13 @@ Additional requirements at least 6 GB of swap
 
 ## 组件
 
-包含的核心组件为：onlyoffice Community Edition | onlyoffice Document Server 可选安装
+包含的核心组件为：ONLYOFFICE Community Edition | ONLYOFFICE Document Server 可选安装
 
 更多请见[参数表](/docs/zh/stack-components.md)
 
 ## 本项目安装的是 ONLYOFFICE 最新版吗？
 
-对 onlyoffice Community Edition 和 onlyoffice Document Server 来说，本项目均采用 Docker 镜像安装，即每一次安装均可保证为 ONLYOFFICE 官方发布的最新稳定版。
+对 ONLYOFFICE Community Edition 和 ONLYOFFICE Document Server 来说，本项目均采用 Docker 镜像安装，即每一次安装均可保证为 ONLYOFFICE 官方发布的最新稳定版。
 
 ## 安装指南
 
