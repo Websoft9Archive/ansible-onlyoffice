@@ -10,7 +10,7 @@
   vars_prompt:
   - name: 'onlyoffice_selection'
     prompt: "\nWhich application do you want to install? [ 1/2 ] \n\n
-    1: OnlyOffice Community Edition (include Document Server and Community Server) \n
+    1: OnlyOffice Community Edition (include Document Server and Community Server, you need a 2C8G VM at least) \n
     2: OnlyOffice Document Server\n"
     private: no
     default: 1
