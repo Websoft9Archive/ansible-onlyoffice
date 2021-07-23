@@ -16,9 +16,11 @@
     - /data/wwwroot/onlyoffice/volumes
     - /data/db/mysql/
     
-- name: Run the docker-compose
+- name: Rename compose, env filename and Run the docker-compose
   shell: |
-    docker-compose -f docker-compose-production.yml up -d
+    mv docker-compose-production.yml docker-compose.yml
+    mv .env_all .env
+    docker-compose up -d
     sleep 30
   args:
     chdir: /data/wwwroot/onlyoffice
