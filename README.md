@@ -1,7 +1,7 @@
 
-# OnyOffice 自动化安装与部署
+# ONLYOFFICE 自动化安装与部署
 
-本项目是由 [Websoft9](https://www.websoft9.com) 研发的 [OnyOffice](https://www.onlyoffice.com/zh/) 自动化安装程序，开发语言是 Ansible。使用本项目，只需要用户在 Linux 上运行一条命令，即可自动化安装 OnyOffice，让原本复杂的安装过程变得没有任何技术门槛。  
+本项目是由 [Websoft9](https://www.websoft9.com) 研发的 [ONLYOFFICE](https://www.onlyoffice.com/zh/) 自动化安装程序，开发语言是 Ansible。使用本项目，只需要用户在 Linux 上运行一条命令，即可自动化安装 ONLYOFFICE，让原本复杂的安装过程变得没有任何技术门槛。  
 
 本项目是开源项目，采用 LGPL3.0 开源协议。
 
@@ -26,13 +26,13 @@ Additional requirements at least 6 GB of swap
 
 ## 组件
 
-包含的核心组件为：OnyOffice Community Edition | OnyOffice Document Server 可选安装
+包含的核心组件为：ONLYOFFICE Community Edition | ONLYOFFICE Document Server 可选安装
 
 更多请见[参数表](/docs/zh/stack-components.md)
 
-## 本项目安装的是 OnyOffice 最新版吗？
+## 本项目安装的是 ONLYOFFICE 最新版吗？
 
-对 OnyOffice Community Edition 和 OnyOffice Document Server 来说，本项目均采用 Docker 镜像安装，即每一次安装均可保证为 ONLYOFFICE 官方发布的最新稳定版。
+对 ONLYOFFICE Community Edition 和 ONLYOFFICE Document Server 来说，本项目均采用 Docker 镜像安装，即每一次安装均可保证为 ONLYOFFICE 官方发布的最新稳定版。
 
 ## 安装指南
 
@@ -49,7 +49,7 @@ wget -N https://raw.githubusercontent.com/Websoft9/ansible-linux/main/scripts/in
 1. 操作不慎或网络发生变化，可能会导致SSH连接被中断，安装就会失败，此时请重新安装
 2. 安装缓慢、停滞不前或无故中断，主要是网络不通（或网速太慢）导致的下载问题，此时请重新安装
 
-多种原因导致无法顺利安装，请使用我们在公有云上发布的 [OnlyOffice 镜像](https://apps.websoft9.com/onlyoffice) 的部署方式
+多种原因导致无法顺利安装，请使用我们在公有云上发布的 [ONLYOFFICE 镜像](https://apps.websoft9.com/onlyoffice) 的部署方式
 
 
 ## 文档
