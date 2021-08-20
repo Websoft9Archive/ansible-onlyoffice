@@ -12,7 +12,7 @@
   "components": "ONLYOFFICE, ONLYOFFICE Community Server, ONLYOFFICE Document Server, Nginx, MySQL, phpMyAdmin on Docker, Docker",
   "install_way": {
     "en": "Docker isntallation",
-    "zh": "Docker 安装"
+    "zh": "Docker安装"
   },
   "install_url": "https://hub.docker.com/r/onlyoffice/communityserver/tags?page=1&ordering=last_updated"
 }
