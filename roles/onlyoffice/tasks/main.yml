@@ -41,7 +41,7 @@
   shell: sudo echo $(docker inspect onlyoffice/communityserver  | grep onlyoffice.community.version | sed -n 1p) | tee -a /data/logs/install_version.txt
 
 - name: Check onlyofficedocumentserver Version
-  shell: sudo echo $(docker inspect onlyoffice/communityserver  | grep onlyoffice.community.version | sed -n 1p) | tee -a /data/logs/install_version.txt
+  shell: sudo echo "onlyofficedocumentserver version:" $(docker images |grep onlyoffice/documentserver |awk '{print $2}') | tee -a /data/logs/install_version.txt
 
 - name: Check onlyoffice Service
   shell: echo "onlyoffice" `docker inspect onlyoffice |grep -i status`
