@@ -23,6 +23,6 @@ init_docker:
       - export DOCKER_CLIENT_TIMEOUT=500
       - export COMPOSE_HTTP_TIMEOUT=500
       - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/.env
-      - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/config/mysql/docker-entrypoint-initdb.d/onlyoffice-initdb.sql
+      - sudo sed -i "s/123456/$new_password/g" /data/wwwroot/onlyoffice/src/config/mysql/docker-entrypoint-initdb.d/onlyoffice-initdb.sql
     volumes: 
       - /data/wwwroot/onlyoffice/volumes
