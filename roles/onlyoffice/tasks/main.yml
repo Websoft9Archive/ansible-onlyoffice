@@ -18,8 +18,6 @@
     
 - name: Rename compose, env filename and Run the docker-compose
   shell: |
-    mv docker-compose-production.yml docker-compose.yml
-    mv .env_all .env
     docker-compose up -d
     sleep 30
   args:
