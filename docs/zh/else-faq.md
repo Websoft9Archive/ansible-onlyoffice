@@ -21,6 +21,13 @@ OnlyOffice的产品家族比较复杂，根据官方的介绍，可以分为：
 
 COMMUNITY EDITION 是一个完全免费的版本。DEVELOPER EDITION 是适用于开发者的[收费版本](https://www.onlyoffice.com/zh/developer-edition-prices.aspx)。
 
+#### ONLYOFFICE Document Server 同时连接数是如何规定的？
+
+ONLYOFFICE Document Server 同时连接数是指用户在编辑模式下打开文档的数量。  
+例如，对于具有200个同时连接的许可证，一个用户可以打开200个文档，200个用户每个可以打开一个，50个用户每个可以打开4个文档等。  
+以何种方式并不重要，但文档服务器只会根据您购买的许可证处理编辑请求的数量。  
+超过此数量的连接以预览模式打开文档。  
+
 #### 数据库密码可以修改吗？
 
 可以，但是修改后需要同步修改 ONLYOFFICE docker-compose 文件，然后通过 docker-compose 重新运行容器。
