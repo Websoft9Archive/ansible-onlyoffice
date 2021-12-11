@@ -21,6 +21,10 @@ OnlyOffice的产品家族比较复杂，根据官方的介绍，可以分为：
 
 COMMUNITY EDITION 是一个完全免费的版本。DEVELOPER EDITION 是适用于开发者的[收费版本](https://www.onlyoffice.com/zh/developer-edition-prices.aspx)。
 
+#### ONLYOFFICE 开源版并发连接数有限制吗？
+
+并发连接数不超过20个（Up to 20 Simultaneous connections）
+
 #### ONLYOFFICE Document Server 同时连接数是如何规定的？
 
 ONLYOFFICE Document Server 同时连接数是指用户在编辑模式下打开文档的数量。  
